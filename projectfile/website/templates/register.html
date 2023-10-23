@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block header %}
+<div class="background-color-register">
+    <div class="margin-content">
+    <body>
+        <br><br><br><br><br>
+{% endblock %}
+{% block content %}
+        <br>
+        <div class="wrap-register">
+            <table>
+                <tr>
+                    <th><table>
+                        <tr style="margin-left:30px;">
+                            <th><p>Given Name</p></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th colspan="3"><input type="text" id="firstname" name="firstname" class="enter-details"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr>
+                            <th><p>Surname</p></th></th>
+                            <th></th>
+                        
+                        <tr>
+                            <th colspan="3"><input type="text" id="lastname" name="lastname" class="enter-details"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr>
+                            <th><p>Email address</p></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th colspan="3"><input type="email" id="email" name="email" class="enter-details"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr>
+                            <th><p>Password</p></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th colspan="3"><input type="password" id="password" name="passowrd" class="enter-details"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr>
+                            <th><p>Mobile number</p></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th colspan="3"><input type="text" id="phone" name="phone" class="enter-details"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:30px;"></th>
+                        </tr>
+                </tr>
+            </table>
+            <!-- User must agree to the terms and conditions (function will be implemented in Assignment 3) -->
+            <div class="checkbox1">
+                <table>
+                    <tr>
+                        <th><input type="checkbox" id="Terms&Conditions" name="Terms&Conditions" value="Terms&Conditions">
+                            <label style="font-weight:lighter;" for="Terms&Conditions">I have read and agree to the</label></th>
+                        <th style="width:2px;"></th>
+                        <th style="font-weight:lighter;"><a href="">Terms & Conditions.</a></th>
+                        <th><p style="color:red;">*</p></th>
+                    </tr>
+                </table>
+                <!-- Ckeckbox to receive notifications -->
+                <input type="checkbox" id="notification" name="notification" value="notification">
+                <label style="font-weight:lighter;" for="notification">I would like to receive notification for new and upcoming events.</label>
+            </div>
+            <br>
+            <table>
+                <tr>
+                    <!-- User can switch to Login if they have an account -->
+                    <th><input type="submit" value="Sign Up" class="log-in-sign-in-button"></th>
+                    <th><p style="padding-left:50px;">Have an account?</p></th>
+                    <th style="width:5px;"></th>
+                    <th><a href="login.html"><p style="color:rgb(0, 89, 255);">Log In</p></a></th>
+                </tr>
+                <tr>
+                    <th style="height:30px;"></th>
+                </tr>
+            </table>
+        </div>
+    </body>
+    </div>
+</div>
+<br><br><br>
+<body>
+<br>
+{% endblock %}
+    

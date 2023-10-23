@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% block header %}
+<div class="background-color-createevent">
+    <div class="margin-content">
+    <body>
+        <br>
+        <br>
+        <br>
+        <br>
+{% endblock %}
+{% block content %}
+        <div class="wrap-create-event">
+            <table>
+                <tr>
+                    <th><table>
+                        <tr>
+                            <th><p>Event title</p></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th colspan="5"><input type="text" id="eventtitle" name="eventtitle" class="enter-details"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr><table>
+                            <tr>
+                                <th><p class="date">Date</p></th>
+                                <th><p class="s-time">Start Time</p></th>
+                                <th><p class="e-time">End Time</p></th>
+                            <tr>
+                                <th colspan="1"><input type="text" id="date" name="date" placeholder="dd/mm/yyyy" class="date-entry"></th>
+                                <th colspan="1"><input type="text" id="starttime" name="starttime" placeholder="hh:mm" class="starttime-entry"></th>
+                                <th colspan="1"><input type="text" id="endtime" name="endtime" placeholder="hh:mm" class="endtime-entry"></th>
+                            </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr>
+                            <th><p>Event type</p></th>
+                        </tr>
+                        <tr>
+                            <th><input type="radio" id="eventtype" name="eventtype">
+                            <label style="font-weight:lighter;" for="eventtype">In person</label></th>
+                        </tr>
+                        <tr>
+                            <th><input type="radio" id="eventtype" name="eventtype">
+                            <label style="font-weight:lighter;" for="eventtype">Online</label></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr>
+                            <th><p>Location</p></th>
+                        </tr>
+                        <tr>
+                            <th colspan="5"><input type="text" id="street" name="street" placeholder="Street" class="enter-details"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="1"><input type="text" id="suburb" name="suburb" placeholder="Suburb" class="suburb"></th>
+                            <th colspan="1"><input type="text" id="postcode" name="postcode" placeholder="Postcode" class="postcode"></th>
+                            <th colspan="1"><input type="text" id="state" name="state" placeholder="State" class="state"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr>
+                            <th><p>Select a category</p></th>
+                        </tr>
+                        <tr>
+                            <th><input type="radio" id="category" name="category">
+                            <label style="font-weight:lighter;" for="category">Sales & Marketing</label></th>
+                            <th><input type="radio" id="category" name="category">
+                            <label style="font-weight:lighter;" for="category" class="margin-radio">Finance</label></th>
+                        </tr>
+                        <tr>
+                            <th><input type="radio" id="category" name="category">
+                            <label style="font-weight:lighter;" for="category">Startup</label></th>
+                            <th><input type="radio" id="category" name="category">
+                            <label style="font-weight:lighter;" for="category" class="margin-radio">Real Estate</label></th>
+                        </tr>
+                        <tr>
+                            <th><input type="radio" id="category" name="category">
+                            <label style="font-weight:lighter;" for="category">Education</label></th>
+                            <th><input type="radio" id="category" name="category">
+                            <label style="font-weight:lighter;" for="category" class="margin-radio">Other</label></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr>
+                            <th><p>Name of performer</p></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th colspan="5"><input type="text" id="performer" name="performer" class="enter-details"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr>
+                            <th><p>Number of Tickets available</p></th>
+                        </tr>
+                        <tr>
+                            <th colspan="1"><input type="text" id="ticketsavailable" name="ticketsavailable" style="width:120px;height:35px;font-weight:lighter;"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr>
+                            <th><p>Ticket price</p></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th colspan="1"><input type="text" id="price" name="price" value="$" style="width:155px;height:35px;font-weight:lighter;"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <!-- Users can add pictures to the event (Function will be implemented in Assignment 3) -->
+                    <th><p>Add pictures</p></th>
+                </tr>
+                <tr>
+                    <th colspan="1"><a href=""><button class="add-picture-button">+</button></a></th>       
+                </tr>
+                <tr>
+                    <th style="height:20px;"></th>
+                </tr>
+            </table>
+            <br>
+            <form class="description-box">
+                Description<br><br>
+                <div id="description-text" contenteditable="true"></div>
+                <br>
+                <br>
+            </form>
+            <table>
+                <tr>
+                    <th></th>
+                    <th><a href="/"><input type="submit" value="Create event" class="create-event-button"></a></th>
+                    <th><p style="width:50px;"></p></th>
+                    <th><a href="/"><p style="font-size:16px;font-weight:lighter;color:rgb(0, 89, 255);padding-top:10px;">Cancel</p></a></th>
+                </tr>
+                <tr>
+                    <th style="height:20px;"></th>
+                </tr>
+            </table>
+        </div>
+    </body>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

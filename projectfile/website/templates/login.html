@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block header %}
+<form method="POST">
+<div class="background-color-login">
+    <div class="margin-content">
+    <body>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+{% endblock %}
+{% block content %}
+        <div class="wrap-login">
+            <table>
+                <tr>
+                    <th><table>
+                        <tr style="margin-left:30px;">
+                            <th><p>Email address</p></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th colspan="3"><input type="email" id="email" name="email" class="enter-details"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:20px;"></th>
+                        </tr>
+                        <tr>
+                            <th><p>Password</p></th></th>
+                            <th></th>
+                        
+                        <tr>
+                            <th colspan="3"><input type="password" id="password" name="password" class="enter-details"></th>
+                        </tr>
+                        <tr>
+                            <th style="height:30px;"></th>
+                        </tr>
+                </tr>
+            </table>
+            <br>
+            <table>
+                <tr>
+                    <!-- User can switch to Signup if they have no account -->
+                    <th><input type="submit" value="Log In" class="log-in-sign-in-button"></th>
+                    <th><p style="padding-left:40px;">Don't have an account yet?</p></th>
+                    <th style="width:5px;"></th>
+                    <th><a href="register.html"><p style="color:rgb(0, 89, 255);">Sign Up</p></a></th>
+                </tr>
+                <tr>
+                    <th style="height:30px;"></th>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <br>
+        <!-- Reset password (Pop-up will appear) (Function will be implemented in Assignment 3) -->
+        <p class="forgot-password1">Forgot Password?</p>
+        <a href=""><p class="forgot-password">Reset your Password here</p></a>
+    </body>
+    </div>
+</div>
+<br>
+<br>
+<br>
+{% endblock %}
