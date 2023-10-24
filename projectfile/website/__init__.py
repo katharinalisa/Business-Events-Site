@@ -34,6 +34,7 @@ def create_app():
 
     # create a user loader function takes userid and returns User
     # Importing inside the create_app function avoids circular references
+    from .models import Event, Booking, Comment
     from .models import User
     @login_manager.user_loader
     def load_user(user_id):
@@ -46,5 +47,10 @@ def create_app():
 
     from . import auth
     app.register_blueprint(auth.auth_bp)
-    
+  
+    @app.errorhandler(404) 
+     # inbuilt function which takes error as parameter 
+    def not_found(e): 
+       return render_template("404.html", error=e)
+      
     return app
