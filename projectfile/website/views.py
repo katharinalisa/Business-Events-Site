@@ -23,7 +23,3 @@ def payment():
 def bookings():
     return render_template('booking.html')
 
-@main_bp.route('/hello.html')
-def hello():
-    return render_template('hello.html')
-
