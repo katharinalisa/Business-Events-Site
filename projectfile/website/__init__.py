@@ -42,7 +42,6 @@ def create_app():
 
     # create a user loader function takes userid and returns User
     # Importing inside the create_app function avoids circular references
-    from .models import Event, Booking, Comment
     from .models import User
     @login_manager.user_loader
     def load_user(user_id):
