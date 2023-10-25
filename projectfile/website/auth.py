@@ -31,3 +31,32 @@ def authenticate(): #view function
         else:
             flash(error)
     return render_template('login.html')
+
+@auth_bp.route('/register.html', methods=['GET', 'POST'])
+def sign_up():
+    if request.method == 'POST':
+        firstname = request.form.get('firstname')
+        lastname = request.form.get('lastname')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        password = request.form.get('password')
+
+        if len(email) < 4:
+            flash('Email is too short', category='error')
+        elif len(firstname) < 2:
+            flash('Name should be at least 2 characters', category='error')
+        elif len(password) < 8:
+            flash('Password must be at least 8 characters long', category='error')
+        else:
+            flash('Account created!', category='success')
+
+    return render_template('register.html')
+
+
+@auth_bp.route('/payment.html', methods=['GET', 'POST'])
+def payment():
+    if request.method == 'POST':
+        cardholder = request.form.get('cardholder')
+        cardnumber = request.form.get('cardnumber')
+        expirydate = request.form.get('expirydate')
+        cvv = request.form.get('cvv')
