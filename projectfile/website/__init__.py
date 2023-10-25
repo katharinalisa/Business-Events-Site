@@ -3,8 +3,11 @@ from flask import Flask
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from os import path
+from flask import Blueprint, flash, render_template, request, url_for, redirect
 
 db = SQLAlchemy()
+db_name = 'websitedb.sqlite'
 
 #create a function that creates a web application
 # a web server will run this web application
@@ -15,13 +18,18 @@ def create_app():
     app.debug = True
     app.secret_key = 'somesecretkey'
     #set the app configuration data 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sitedata.sqlite'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{path.join(app.instance_path, db_name)}'
     #initialize db with flask app
     db.init_app(app)
 
-    UPLOAD_FOLDER = '/static/images'
-    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER 
+    # Configures directory for uploaded files
+    UPLOAD_FOLDER = 'static/images'
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+    # Configures directory for serving static files
+    STATIC_FOLDER = 'static'
+    app.config['STATIC_FOLDER'] = STATIC_FOLDER
+  
     Bootstrap5(app)
     
     #initialize the login manager
@@ -54,3 +62,7 @@ def create_app():
        return render_template("404.html", error=e)
       
     return app
+
+def create_database(app):
+    with app.app_context():
+        db.create_all()
