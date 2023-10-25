@@ -24,3 +24,13 @@ class User(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+
+class Event(db.Model):
+    __tablename__ = 'events'
+    event_id = db.Column(db.Integer, primary_key=True)
+    event_name = db.Column(db.String(120))
+    location = db.Column(db.String(200))
+    price = db.Column(db.String(10))
+    date = db.Column(db.String(50))
+    time = db.Column(db.String(50))
+    performer = db.Column(db.String(100))
