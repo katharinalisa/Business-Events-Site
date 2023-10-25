@@ -10,47 +10,75 @@ auth_bp = Blueprint('auth', __name__)
 
 # this is the hint for a login function
 @auth_bp.route('/login.html', methods=['GET', 'POST'])
-def authenticate(): #view function
+def login():
     login_form = LoginForm()
-    error=None
-    if(login_form.validate_on_submit()==True):
-        email = login_form.email.data
-        password = login_form.password.data
-        u1 = User.query.filter_by(name=email).first()
-        if u1 is None:
-            error='Incorrect email address'
-        elif not check_password_hash(u1.password_hash, password): # takes the hash and password
-            error='Email and password do not match'
-        if error is None:
-            login_user(u1)
-            nextp = request.args.get('next') #this gives the url from where the login page was accessed
-            print(nextp)
-            if next is None or not nextp.startswith('/'):
-                return redirect(url_for('index'))
-            return redirect(nextp)
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        # Check if a user with the provided phone number exists
+        user_email = User.query.filter_by(email=email).first()
+
+        if user_email and user_email.check_password(password):
+            session['user_id'] = user_email.user_id
+            login_user(user_email)
+            flash('Login successful!', 'success')
+            return redirect(url_for('main.index'))
         else:
-            flash(error)
-    return render_template('login.html')
+            flash('Email and password do not match! Please try again', 'error')
+
+    return render_template('login.html', form=login_form)
 
 @auth_bp.route('/register.html', methods=['GET', 'POST'])
 def sign_up():
-    if request.method == 'POST':
-        firstname = request.form.get('firstname')
-        lastname = request.form.get('lastname')
-        email = request.form.get('email')
-        phone = request.form.get('phone')
-        password = request.form.get('password')
-
+    data = request.form
+    print(data)
+    register_form = RegisterForm()
+    if request.method =='POST':
+        email = register_form.email.data
+        password = register_form.password.data  # Get the password directly from the form
+        firstname = register_form.firstname.data
+        lastname = register_form.lastname.data
+        phone = register_form.phone.data
+        existing_user_phone = User.query.filter_by(phone=phone).first()
+        existing_user_email = User.query.filter_by(email=email).first()
+    
         if len(email) < 4:
             flash('Email is too short', category='error')
         elif len(firstname) < 2:
             flash('Name should be at least 2 characters', category='error')
+        elif len(lastname) < 2:
+            flash('Surname should be at least 2 characters', category='error')
         elif len(password) < 8:
             flash('Password must be at least 8 characters long', category='error')
-        else:
-            flash('Account created!', category='success')
+        elif len(phone) < 5:
+            flash('Phone number is too short', category='error')
 
-    return render_template('register.html')
+        elif existing_user_phone:
+            flash('Phone number already exists. Please choose a different one.', 'error')
+        elif existing_user_email:
+            flash('Email already exists. Please choose a different one.', 'error')
+        else:
+        # Hash the password before storing it in the database
+            hashed_password = generate_password_hash(password)
+
+            # Create a new user and add it to the database
+            new_user = User(firstname=firstname, lastname=lastname, email=email, password=hashed_password, phone=phone)
+            db.session.add(new_user)
+            db.session.commit()
+
+            flash('Account created! You may want to log in now.', category='success')
+            return redirect(url_for('main.index'))
+
+    return render_template('register.html', form=register_form)
+
+
+
+@auth_bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('auth.login'))
 
 
 @auth_bp.route('/payment.html', methods=['GET', 'POST'])
