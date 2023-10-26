@@ -34,3 +34,6 @@ class Event(db.Model):
     date = db.Column(db.String(50))
     time = db.Column(db.String(50))
     performer = db.Column(db.String(100))
+    event_category = db.Column(db.String(50))
+    event_type = db.Column(db.String(30))
+    description = db.Column(db.String(2000))
