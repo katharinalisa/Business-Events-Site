@@ -46,18 +46,18 @@ def sign_up():
         if len(email) < 4:
             flash('Email is too short', category='error')
         elif len(firstname) < 2:
-            flash('Name should be at least 2 characters', category='error')
+            flash('Name should be at least 2 or morecharacters', category='error')
         elif len(lastname) < 2:
-            flash('Surname should be at least 2 characters', category='error')
+            flash('Surname should be at least 2 or more characters', category='error')
         elif len(password) < 8:
-            flash('Password must be at least 8 characters long', category='error')
+            flash('Password must be at least 8 or more characters long', category='error')
         elif len(phone) < 5:
             flash('Phone number is too short', category='error')
 
         elif existing_user_phone:
-            flash('Phone number already exists. Please choose a different one.', 'error')
+            flash('Phone number already exists. Please choose a different Phone number.', 'error')
         elif existing_user_email:
-            flash('Email already exists. Please choose a different one.', 'error')
+            flash('Email already exists. Please choose a different Phone number.', 'error')
         else:
         # Hash the password before storing it in the database
             hashed_password = generate_password_hash(password)
