@@ -41,3 +41,8 @@ class Event(db.Model):
     booking_id = db.relationship('Booking', backref='event')
     def __repr__(self):
         return f"Event: {self.event_id} {self.event_name}"
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    comment_id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(120))
