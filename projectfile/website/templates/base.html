@@ -23,29 +23,25 @@
     <div id="navbar">
         <div class="alignnav">
            <a href=""><img src="{{ url_for('static', filename='images/magnifyingglass.png') }}" style="width:18px;height:18px;margin-top:-2px;" alt="Search"></a>
-           <a href="login.html">Log In</a>
-           <a>Sign Up</a>
-           <a href="createevent.html">Create event</a>
-           <div class="title">
-           <a href="/"><b style="font-size:30px;">Brisbuis</b></a>
-           </div>
+
+           {% if current_user.is_authenticated %}
+            <a href="{{ url_for('auth.logout') }}">Log Out</a>
+            <a>Welcome {{current_user.firstname}}</a>
+            <a href="booking.html">Bookings</a>
+            <a href="createevent.html">Create event</a>
+            <div class="title">
+              <a href="/"><b style="font-size:30px;">Brisbuis</b></a>
+            </div>
+           {% else %}
+            <a href="login.html">Log In</a>
+            <a href="register.html">Sign Up</a>
+            <a href="login.html">Create event</a>
+            <div class="title">
+            <a href="/"><b style="font-size:30px;">Brisbuis</b></a>
+            </div>
+           {% endif %}
         </div>
-       </div>
-       <!-- Function to make navigation bar at the top sticky -->
-    <script>
-       window.onscroll = function() {myFunction()};
-       
-       var navbar = document.getElementById("navbar");
-       var sticky = navbar.offsetTop;
-       
-       function myFunction() {
-         if (window.pageYOffset >= sticky) {
-           navbar.classList.add("sticky")
-         } else {
-           navbar.classList.remove("sticky");
-         }
-       }
-    </script>
+    </div>
       <!-- Flash messages -->
 <div id="flash_message">
   <div class="container-fluid">
