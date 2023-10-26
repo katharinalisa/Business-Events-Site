@@ -2,37 +2,33 @@
 {% block header %}
 <form method="POST">
 <div class="background-color-login">
-    <div class="margin-content">
-    <body>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+    <body><br><br><br><br>
+        <h2 style="text-align:center">Log In</h2><br>
+    </body>
 {% endblock %}
 {% block content %}
+<body>
+<div class="margin-content">
         <div class="wrap-login">
             <table>
                 <tr>
                     <th><table>
                         <tr style="margin-left:30px;">
-                            <th><p>Email address</p></th>
+                            <th><label>Email address</label></th>
                             <th></th>
                         </tr>
                         <tr>
-                            <th colspan="3"><input type="email" id="email" name="email" class="enter-details"></th>
+                            <th colspan="3"><input type="email" id="email" name="email" class="enter-details" required></th>
                         </tr>
                         <tr>
                             <th style="height:20px;"></th>
                         </tr>
                         <tr>
-                            <th><p>Password</p></th></th>
+                            <th><label>Password</label></th></th>
                             <th></th>
                         
                         <tr>
-                            <th colspan="3"><input type="password" id="password" name="password" class="enter-details"></th>
+                            <th colspan="3"><input type="password" id="password" name="password" class="enter-details" required></th>
                         </tr>
                         <tr>
                             <th style="height:30px;"></th>
@@ -55,13 +51,14 @@
         </div>
         <br>
         <br>
-        <!-- Reset password (Pop-up will appear) (Function will be implemented in Assignment 3) -->
+        <!-- Reset password -->
         <p class="forgot-password1">Forgot Password?</p>
         <a href=""><p class="forgot-password">Reset your Password here</p></a>
-    </body>
     </div>
+    </body>
 </div>
 <br>
 <br>
 <br>
+</form>
 {% endblock %}
