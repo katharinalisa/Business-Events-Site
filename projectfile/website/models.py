@@ -46,3 +46,6 @@ class Comment(db.Model):
     __tablename__ = 'comments'
     comment_id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(120))
+    date_time = db.Column(db.DateTime, default=datetime.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    event_id = db.Column(db.Integer, db.ForeignKey('events.event_id'))
