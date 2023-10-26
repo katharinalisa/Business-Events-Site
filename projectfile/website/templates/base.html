@@ -65,15 +65,28 @@
   </div>
 </div>
 </body>
-    <body>
+    <!-- Makes navbar and flash message sticky -->
+<script>
+  window.onscroll = function() {myFunction()};
+  
+  var navbar = document.getElementById("navbar");
+  var flashMessage = document.getElementById("flash_message");
+  var sticky = navbar.offsetTop;
+  
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+      flashMessage.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+      flashMessage.classList.remove("sticky")
+    }
+  }
+</script>
     {% block header %} 
-
     {% endblock %}
-
     {% block content %} 
-    
     {% endblock %}
-    </body>
     <div class="wrap-footer">
         <br>
         <br>
