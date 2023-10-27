@@ -55,3 +55,5 @@ class Comment(db.Model):
 class Booking(db.Model):
     __tablename__ = 'bookings'
     booking_id = db.Column(db.Integer, primary_key=True)
+    event_name = db.Column(db.String(120))
+    booking_datetime = db.Column(db.DateTime, default=datetime.now())
