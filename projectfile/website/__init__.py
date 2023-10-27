@@ -27,7 +27,7 @@ def create_app():
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
     # Configures directory for serving static files
-    STATIC_FOLDER = 'static'
+    STATIC_FOLDER = 'static' # This is the default value for serving static assets
     app.config['STATIC_FOLDER'] = STATIC_FOLDER
   
     Bootstrap5(app)
@@ -54,6 +54,9 @@ def create_app():
 
     from . import auth
     app.register_blueprint(auth.auth_bp)
+  
+    from . import event
+    app.register_blueprint(event.destbp) 
   
     @app.errorhandler(404) 
      # inbuilt function which takes error as parameter 
