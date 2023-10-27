@@ -51,3 +51,7 @@ class Comment(db.Model):
     event_id = db.Column(db.Integer, db.ForeignKey('events.event_id'))
     def __repr__(self):
         return f"Comment: {self.text}"
+
+class Booking(db.Model):
+    __tablename__ = 'bookings'
+    booking_id = db.Column(db.Integer, primary_key=True)
