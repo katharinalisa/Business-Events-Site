@@ -57,3 +57,5 @@ class Booking(db.Model):
     booking_id = db.Column(db.Integer, primary_key=True)
     event_name = db.Column(db.String(120))
     booking_datetime = db.Column(db.DateTime, default=datetime.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    event_id = db.Column(db.Integer, db.ForeignKey('events.event_id'))
