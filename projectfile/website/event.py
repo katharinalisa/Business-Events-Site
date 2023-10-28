@@ -17,3 +17,9 @@ def show(event_id):
     event = db.session.scalar(db.select(Event).where(Event.event_id==event_id))
     form = CommentForm()    
     return render_template('content-page.html', event=event, form=form)
+
+@destbp.route('/createevent.html', methods=['GET', 'POST'])
+@login_required
+@login_required
+def create():
+    form = EventForm()
