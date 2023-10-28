@@ -20,8 +20,7 @@ class RegisterForm(FlaskForm):
     phone=StringField("Phone", validators=[InputRequired()])
     submit = SubmitField("Register")
     
-  # this is the comment form
-class CommentForm(FlaskForm):
+  class CommentForm(FlaskForm):
     text = TextAreaField('Comment', validators=[InputRequired()])
     submit = SubmitField('Create')
     
