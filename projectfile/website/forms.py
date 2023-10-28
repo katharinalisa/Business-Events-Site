@@ -39,3 +39,10 @@ class EventForm(FlaskForm):
     event_type = StringField("Event type", validators=[InputRequired()])
     description = StringField("Description", validators=[InputRequired()])
     comment_id = StringField("Comment", validators=[InputRequired()])
+    submit = SubmitField('Create Event')
+
+
+    class BookingForm(FlaskForm):
+        booking_ref=StringField("First Name", validators=[InputRequired()])
+        event_name=StringField("Last Name", validators=[InputRequired()])
+    
