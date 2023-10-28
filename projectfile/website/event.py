@@ -28,3 +28,7 @@ def create():
             # Attempt to insert data into the database
             db_file_path = check_upload_file(form)
             event = Event(
+                event_name=form.event_name.data,
+                street=form.street.data,
+                suburb=form.suburb.data,
+                postcode=form.postcode.data,
