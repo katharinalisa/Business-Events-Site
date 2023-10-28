@@ -45,4 +45,6 @@ class EventForm(FlaskForm):
     class BookingForm(FlaskForm):
         booking_ref=StringField("First Name", validators=[InputRequired()])
         event_name=StringField("Last Name", validators=[InputRequired()])
+        booking_datetime = StringField("Email Address", validators=[Email()])
+        password=PasswordField("Password", validators=[InputRequired(message='Enter a password')])
     
