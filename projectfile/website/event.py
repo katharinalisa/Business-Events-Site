@@ -23,3 +23,8 @@ def show(event_id):
 @login_required
 def create():
     form = EventForm()
+    if form.validate_on_submit():
+        try:
+            # Attempt to insert data into the database
+            db_file_path = check_upload_file(form)
+            event = Event(
