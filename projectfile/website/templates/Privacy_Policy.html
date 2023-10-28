@@ -1,43 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+{% extends "base.html" %}
+{% block header %}
     <title>Privacy Policy - Brisbuis</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .content {
-            margin-top: 20px;
-            text-align: left;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        h2 {
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-
+{% endblock %}
+{% block content %}
 <body>
-    <h1>Privacy Policy - Brisbuis</h1>
-
+    <br><br><br><br>
+    <div class="margin-content">
+    <h2 style="text-align:center;font-weight:bold;">Privacy Policy - Brisbuis</h2>
+    <br>
     <div class="content">
-        <h2>Information We Collect:</h2>
+        <h3>Information We Collect:</h3>
         <p>We may collect personal information, such as your name, email address, and other contact details, when you interact with our website. We may also collect non-personal information such as your IP address for analytics.</p>
 
-        <h2>How We Use Your Information:</h2>
+        <h3>How We Use Your Information:</h3>
         <p>We use the information we collect to:
         <ul>
             <li>Provide and maintain our services</li>
@@ -47,23 +22,24 @@
         </ul>
         </p>
 
-        <h2>Sharing Your Information:</h2>
+        <h3>Sharing Your Information:</h3>
         <p>We do not by any means sell, or misuse your personal information. We may share non-personal information for analytical purposes.</p>
 
-        <h2>Security:</h2>
+        <h3>Security:</h3>
         <p>We implement efficient security protocols to protect your personal information. However, no data transmission over the web can be guaranteed.</p>
 
-        <h2>Your Choices:</h2>
+        <h3>Your Choices:</h3>
         <p>You can opt out of receiving promotional emails from us. You may also contact us to update or delete your personal information from our website records.</p>
 
-        <h2>Changes to This Privacy Policy:</h2>
+        <h3>Changes to This Privacy Policy:</h3>
         <p>We may update our privacy policy periodically. Which ofcourse you will be notified by your contacts given to us</p>
 
-        <h2>Contact Us:</h2>
-        <p>If you have any questions , please contact us.</p>
+        <h3>Contact Us:</h3>
+        <p>Need to reach out to us? Our administrators are here to assist you with any questions or inquiries you might have. We value your feedback and are dedicated to making your experience as seamless as possible.</p>
 
         <p>This privacy policy applies to information collected through our website and services. By using our website, you agree to the terms of this privacy policy.</p>
     </div>
+    </div>
 </body>
-
-</html>
+<br><br>
+{% endblock %}
