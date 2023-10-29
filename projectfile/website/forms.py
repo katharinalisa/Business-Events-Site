@@ -24,7 +24,7 @@ class RegisterForm(FlaskForm):
     text = TextAreaField('Comment', validators=[InputRequired()])
     submit = SubmitField('Create')
     
-  # this is the event form
+  # Code to create Event Form
 class EventForm(FlaskForm):
     event_name = StringField("Event Name", validators=[InputRequired()])
     location = StringField("Location", validators=[InputRequired()])
@@ -40,13 +40,12 @@ class EventForm(FlaskForm):
     description = StringField("Description", validators=[InputRequired()])
     comment_id = StringField("Comment", validators=[InputRequired()])
     submit = SubmitField('Create Event')
-
-
-    class BookingForm(FlaskForm):
-        booking_ref=StringField("First Name", validators=[InputRequired()])
-        event_name=StringField("Last Name", validators=[InputRequired()])
-        booking_datetime = StringField("Email Address", validators=[Email()])
-        password=PasswordField("Password", validators=[InputRequired(message='Enter a password')])
-        phone=StringField("Phone")
-        submit = SubmitField("Register")
+    # Code to create the booking form
+class BookingForm(FlaskForm):
+    booking_ref=StringField("First Name", validators=[InputRequired()])
+    event_name=StringField("Last Name", validators=[InputRequired()])
+    booking_datetime = StringField("Email Address", validators=[Email()])
+    password=PasswordField("Password", validators=[InputRequired(message='Enter a password')])
+    phone=StringField("Phone")
+    submit = SubmitField("Register")
     
