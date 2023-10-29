@@ -1,6 +1,9 @@
 from flask import Blueprint
 from flask import Blueprint, flash, render_template, request, url_for, redirect
 
+# Blueprint for main routes handling different pages of the web application.
+# Each route renders a specific HTML template when accessed.
+
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
