@@ -32,3 +32,6 @@ def create():
                 street=form.street.data,
                 suburb=form.suburb.data,
                 postcode=form.postcode.data,
+                state=form.state.data,
+                price=form.price.data,
+                date=datetime.strptime(form.date.data, '%Y-%m-%d'),
