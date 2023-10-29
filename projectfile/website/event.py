@@ -10,6 +10,7 @@ import os
 from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
 
+  # Flask Blueprint for Event Routes
 destbp = Blueprint('event', __name__)
 
 @destbp.route('/<event_id>', methods=['GET', 'POST'])
@@ -21,6 +22,7 @@ def show(event_id):
 @destbp.route('/createevent.html', methods=['GET', 'POST'])
 @login_required
 @login_required
+  #initialising an event form
 def create():
     form = EventForm()
     if form.validate_on_submit():
