@@ -28,7 +28,7 @@ def login():
             flash('Email and password do not match! Please try again', 'error')
 
     return render_template('login.html', form=login_form)
-
+# Route for user Registration Form
 @auth_bp.route('/register.html', methods=['GET', 'POST'])
 def sign_up():
     data = request.form
