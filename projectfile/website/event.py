@@ -35,3 +35,7 @@ def create():
                 state=form.state.data,
                 price=form.price.data,
                 date=datetime.strptime(form.date.data, '%Y-%m-%d'),
+                starttime=datetime.strptime(form.starttime.data, '%H:%M'),
+                endtime=datetime.strptime(form.endtime.data, '%H:%M'),
+                performer=form.performer.data,
+                event_category=form.event_category.data,
