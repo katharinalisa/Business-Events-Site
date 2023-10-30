@@ -23,7 +23,8 @@ def show(event_id):
 @login_required
 def create():
     form = EventForm()
-  #initialising an event form
+
+#initialising an event form
 def create():
     form = EventForm()
     if form.validate_on_submit():
