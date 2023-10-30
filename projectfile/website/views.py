@@ -1,5 +1,7 @@
 from flask import Blueprint
 from flask import Blueprint, flash, render_template, request, url_for, redirect
+from .models import Event
+from datetime import datetime, timedelta
 
 # Blueprint for main routes handling different pages of the web application.
 # Each route renders a specific HTML template when accessed.
