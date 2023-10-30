@@ -9,7 +9,12 @@ main_bp = Blueprint('main', __name__)
 # Route for the home page (index).
 @main_bp.route('/')
 def index():
-    return render_template('index.html')
+    current_date = datetime.now().date()  # Get the current date
+    events = Event.query.all()
+    max_acceptable_date = current_date + timedelta(days=7)
+    events = Event.query.all()
+    filtered_events = [event for event in events if current_date <= event.date <= max_acceptable_date]
+    return render_template('index.html', events=events, filtered_events=filtered_events)
     
 # Route for the event content page.
 @main_bp.route('/content-page.html')
