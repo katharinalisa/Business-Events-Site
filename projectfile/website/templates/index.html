@@ -2,25 +2,25 @@
 {% block header %}
 
 <script>
-    // Get all category buttons
+   
     const category1 = document.querySelectorAll('.icon1');
     const category2 = document.querySelectorAll('.icon2');
     const category3 = document.querySelectorAll('.icon3');
     const category4 = document.querySelectorAll('.icon4');
     const category5 = document.querySelectorAll('.icon5');
     
-    // Get all event cards (assuming they have a common class, e.g., 'event-card')
+    
     const eventCards = document.querySelectorAll('.event-card');
 
-    // Add a click event listener to each category button
+  
     category1.addEventListener('click', () => filterEvents('Marketing'));
     category2.addEventListener('click', () => filterEvents('Finance'));
     category3.addEventListener('click', () => filterEvents('Startup'));
     category4.addEventListener('click', () => filterEvents('Real Estate'));
     category5.addEventListener('click', () => filterEvents('Education'));
-    // Add listeners for other category buttons if needed
+    
 
-    // Function to filter events
+
     function filterEvents(category) {
         eventCards.forEach(card => {
             const eventCategory = card.getAttribute('data-category');
