@@ -21,7 +21,8 @@ def show(event_id):
 
 @destbp.route('/createevent.html', methods=['GET', 'POST'])
 @login_required
-@login_required
+def create():
+    form = EventForm()
   #initialising an event form
 def create():
     form = EventForm()
@@ -48,3 +49,5 @@ def create():
             )
             db.session.add(event)
             db.session.commit()
+
+
