@@ -34,53 +34,38 @@
     }
 </script>
 
-        <!-- Icons (links will be finalised in Assignment 3) -->
-        <tr>
-            <th><a href=""><img src="{{ url_for('static', filename='images/marketing.webp') }}" class="icon1" alt="Marketing"></a></th>
-            <th><a href=""><img src="{{ url_for('static', filename='images/finance.webp') }}" class="icon2" alt="Finance"></a></th>
-            <th><a href=""><img src="{{ url_for('static', filename='images/startup.png') }}" class="icon3" alt="Startup"></a></th>
-            <th><a href=""><img src="{{ url_for('static', filename='images/real estate.png') }}" class="icon4" alt="Real Estate"></a></th>
-            <th><a href=""><img src="{{ url_for('static', filename='images/education.png') }}" class="icon5" alt="Education"></a></th>
-        </tr>
-    </table>
-    <table class="table-categories">
-        <tr>
-            <!-- Description of icons -->
-            <th class="marketing"><a href="" style="color:black;">Sales & Marketing</a></th>
-            <th class="finance"><a href="" style="color:black;">Finance</a></th>
-            <th class="startup"><a href="" style="color:black;">Startup</a></th>
-            <th class="realestate"><a href="" style="color:black;">Real Estate</a></th>
-            <th class="education"><a href="" style="color:black;">Education</a></th>
-        </tr>
-    </table>
-    <br>
-    <br>
-    <!-- Select date in box -->
-    <select id="section1" class="selectdate" name="date" id="date">
-        <option value="select date">Select a date</option>
-        <option value="tomorrow">Tomorrow</option>
-        <option value="this week">This week</option>
-        <option value="next week">Next week</option>
-    </select>
-    <br>
-  </div>
-    <br>
-    <br>
-    <div class="events">
-        <p class><b>Explore upcoming events</b></p>
+<div class="background-color">
+    <div class="margin-content">
+        <br><br><br><br><br>
+        <p style="margin-left:4px;color:black;">It is time to build your dream<br>business</p>
+        <br><br>
+        <table>
+          <div class="margin-top-content">
+            <tr>
+                <th><div class="header"><p><b>Greater Brisbane Business Classes</b></p></div></th>
+                <th></th> 
+                <!-- Image of business man on homepage -->
+                <th><div><img src="{{ url_for('static', filename='images/business image title.png') }}" class="title-image"></div></th>
+            </tr>
+          </div>
+        </table>
+        <br><br>
+        <div class="margin-top-content">
+        <div class="points">
+          <p><b>+ learn how to build a successful business<br>+ meet successful business owners<br>+ expand your knowledge<b></p> 
+        </div>
+        </div>
+        <br>
+        <a href="#section1"><button class="exploreevents">Explore events</button></a>
+        <p style="height:60px;"></p>
     </div>
-      <div class="scrollmenu">
-        <a href="content-page.html">
-            <div class="wrap">
-                <div id="card">
-                <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F335194989%2F233567016891%2F1%2Foriginal.20220108-141604?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C910%2C455&s=f63c644bd3e803e16caa952069fb9f6c" style="width:260px;height:130px;"></div>
-                    <p class="event-title-i">Develop a Successful Artificial Intelligence Startup Today! Entrepreneur</p>
-                    <p class="event-location">Virtual Workshop Brisbane, QLD</p>
-                    <p class="event-price">From $105.33</p>
-                    <p class="event-date">Sun, 17 Sep 2023 1:00 PM - 5:00 PM</p>
-                </div>
-                </div>
-        </a>
+    </div>
+    <div class="margin-content">
+    {% endblock %}
+    {% block content %} 
+        <br>
+        <br>
+        
         <!-- Links will be finalised in Assignment 3 (no broken links) -->
         <a href="hello.html">
             <div class="wrap">
