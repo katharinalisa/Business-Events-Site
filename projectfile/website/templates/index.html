@@ -65,6 +65,46 @@
     {% block content %} 
         <br>
         <br>
+            <h1 class="aboutus"><b>About us</b></h1>
+        <!-- Text will be replaced in Assignment 3 -->
+        <div class="wrap-text"><p>Welcome to our event management app!<br>Our service is dedicated to offer a range of popular business events around Greater Brisbane and Brisbane City. Take yourself time to discover our latest events and join our newsletter to get informed about updates and new events! Need to reach out to us? Our administrators are here to assist you with any questions or inquiries you might have. We value your feedback and are dedicated to making your experience as seamless as possible. Thank you for using Brisbuis!</p></div>
+    </div>
+    <br>
+ <body>
+ <br><br>
+  <div class="wrap-content">
+    <br>
+    <br>
+    <div class="explorecategories">
+        <p><b>Explore categories</b></p>
+    </div>
+    <table>
+        <tr>
+            <th><a href="javascript:void(0);" onclick="filterEvents('Marketing')"><img src="{{ url_for('static', filename='images/marketing.webp') }}" class="icon1" data-category="Marketing" alt="Marketing" value="Marketing"></a></th>
+            <th><img src="{{ url_for('static', filename='images/finance.webp') }}" class="icon2" data-category="Finance" alt="Finance" value="Finance"></th>
+            <th><img src="{{ url_for('static', filename='images/startup.png') }}" class="icon3" data-category="Startup" alt="Startup" value="Startup"></th>
+            <th><img src="{{ url_for('static', filename='images/real estate.png') }}" class="icon4" data-category="Real Estate" alt="Real Estate" value="Real Estate"></th>
+            <th><img src="{{ url_for('static', filename='images/education.png') }}" class="icon5" data-category="Education" alt="Education" value="Education"></th>
+        </tr>
+    </table>
+    <table class="table-categories">
+        <tr>
+            <!-- Description of icons -->
+            <th class="marketing" style="color:black;">Sales & Marketing</th>
+            <th class="finance" style="color:black;">Finance</th>
+            <th class="startup" style="color:black;">Startup</th>
+            <th class="realestate" style="color:black;">Real Estate</th>
+            <th class="education" style="color:black;">Education</th>
+        </tr>
+    </table>
+    <br><br><br><br>
+    <div class="events">
+        <p><b>Explore upcoming events</b></p>
+    </div>
+    <div class="scrollmenu">
+        {% if events %}
+
+
         
         <!-- Links will be finalised in Assignment 3 (no broken links) -->
         <a href="hello.html">
