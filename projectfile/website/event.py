@@ -41,3 +41,7 @@ def create():
                 endtime=datetime.strptime(form.endtime.data, '%H:%M'),
                 performer=form.performer.data,
                 event_category=form.event_category.data,
+                event_type=form.event_type.data,
+                description=form.description.data,
+                comments=form.comments.data,
+                image=db_file_path
