@@ -23,32 +23,67 @@ def show(event_id):
 @login_required
 def create():
     form = EventForm()
+    if request.method == 'POST':
+        db_file_path = check_upload_file(form)
+        event_name = form.event_name.data
+        street = form.street.data
+        suburb = form.suburb.data
+        postcode = form.postcode.data
+        state = form.state.data
+        price = form.price.data  # Assuming price is a float column
+        date_str = form.date.data
+        date = datetime.strptime(date_str, '%Y-%m-%d').date()
+        starttime_str = form.starttime.data  # Assuming it's in the format 'HH:MM'
+        endtime_str = form.endtime.data
+        starttime = datetime.strptime(starttime_str, '%H:%M').time()
+        endtime = datetime.strptime(endtime_str, '%H:%M').time()
+        performer = form.performer.data
+        event_category = form.event_category.data
+        event_type = form.event_type.data
+        description = form.description.data
+        comments = form.comments.data
+        image = db_file_path
 
-#initialising an event form
-def create():
-    form = EventForm()
-    if form.validate_on_submit():
-        try:
-            # Attempt to insert data into the database
-            db_file_path = check_upload_file(form)
-            event = Event(
-                event_name=form.event_name.data,
-                street=form.street.data,
-                suburb=form.suburb.data,
-                postcode=form.postcode.data,
-                state=form.state.data,
-                price=form.price.data,
-                date=datetime.strptime(form.date.data, '%Y-%m-%d'),
-                starttime=datetime.strptime(form.starttime.data, '%H:%M'),
-                endtime=datetime.strptime(form.endtime.data, '%H:%M'),
-                performer=form.performer.data,
-                event_category=form.event_category.data,
-                event_type=form.event_type.data,
-                description=form.description.data,
-                comments=form.comments.data,
-                image=db_file_path
+        if len(event_name) < 4:
+            flash('Event name is too short', category='error')
+        else:
+            new_event = Event(
+                event_name=event_name,
+                street=street,
+                suburb=suburb,
+                postcode=postcode,
+                state=state,
+                price=price,
+                date=date,
+                starttime=starttime,
+                endtime=endtime,
+                performer=performer,
+                event_category=event_category,
+                event_type=event_type,
+                description=description,
+                comments=comments,
+                image=image
             )
-            db.session.add(event)
+
+            db.session.add(new_event)
             db.session.commit()
+            flash('Successfully created a new event!', 'success')
+            return redirect(url_for('event.create'))
+        
+    return render_template('createevent.html', form=form)
+
+
+
+def check_upload_file(form):
+    fp = form.image.data
+    if fp is not None:
+        filename = fp.filename
+        BASE_PATH = os.path.dirname(__file__)
+        upload_path = os.path.join(BASE_PATH, 'static/images', secure_filename(filename))
+        db_upload_path = '/static/images/' + secure_filename(filename)
+        fp.save(upload_path)
+        return db_upload_path
+    else:
+        return None
 
 
