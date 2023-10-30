@@ -15,10 +15,10 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(50), unique=True)
     phone = db.Column(db.String(30), unique=True)
     password = db.Column(db.String(150), nullable=False)
-    comment_id = db.relationship('Comment', backref='user')
-    booking_id = db.relationship('Booking', backref='user')
+    comments = db.relationship('Comment', backref='user')
+    bookings = db.relationship('Booking', backref='user')
     def __repr__(self):
-        return f"User: {self.user_id}"
+        return f"User: {self.firstname}"
     def get_id(self):
         return str(self.user_id)
 
