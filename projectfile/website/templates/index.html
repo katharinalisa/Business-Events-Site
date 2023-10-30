@@ -103,7 +103,25 @@
     </div>
     <div class="scrollmenu">
         {% if events %}
-
+        
+        <div class="event-card" data-category="{{ event_category }}"></div>
+            {% for event in filtered_events %}
+                <a href="content-page.html">
+                    <div class="wrap">
+                        <div id="card">
+                            <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
+                            <p class="event-title-i">{{ event.event_name }}</p>
+                            <p class="event-location">{{ event.street }}</p>
+                            <p class="event-price">{{ event.price }}</p>
+                            <p class="event-date">{{ event.date }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <p>There are currently no upcoming events.</p>
+        </div>
+        {% endif %}
 
         
         <!-- Links will be finalised in Assignment 3 (no broken links) -->
