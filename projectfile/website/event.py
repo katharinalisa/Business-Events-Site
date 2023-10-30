@@ -45,3 +45,6 @@ def create():
                 description=form.description.data,
                 comments=form.comments.data,
                 image=db_file_path
+            )
+            db.session.add(event)
+            db.session.commit()
