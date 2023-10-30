@@ -86,4 +86,14 @@ def check_upload_file(form):
     else:
         return None
 
+@destbp.route('/<event_id>/comment', methods=['GET', 'POST'])  
+@login_required
+def comment(event_id):  
+    form = CommentForm()  
+    #get the destination object associated to the page and the comment
+    destination = db.session.scalar(db.select(Event).where(Event.event_id==event_id))
+    if form.validate_on_submit():  
+      #read the comment from the form
+      comment = Comment(text=form.text.data, destination=destination,
+                        user=current_user) 
 
