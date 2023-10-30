@@ -22,8 +22,6 @@
 <body>
     <div id="navbar">
         <div class="alignnav">
-           <a href=""><img src="{{ url_for('static', filename='images/magnifyingglass.png') }}" style="width:18px;height:18px;margin-top:-2px;" alt="Search"></a>
-
            {% if current_user.is_authenticated %}
             <a href="{{ url_for('auth.logout') }}">Log Out</a>
             <a>Welcome {{current_user.firstname}}</a>
