@@ -73,6 +73,9 @@ def create():
     return render_template('createevent.html', form=form)
 
 
+# Function to handle file uploads.
+# Checks if the form contains an image file, saves it to the server,
+# and returns the database path for the saved image. Returns None if no file is present.
 
 def check_upload_file(form):
     fp = form.image.data
