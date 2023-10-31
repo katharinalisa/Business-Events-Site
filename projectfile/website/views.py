@@ -43,3 +43,9 @@ def bookings():
 def forgotpassword():
     return render_template('Forgot_Password.html')
 
+@main_bp.route('/myevents.html')
+def myevents():
+    user_id = current_user.user_id 
+    events = Event.query.filter_by(user_id=user_id).all()
+    return render_template('myevents.html', events=events)
+
