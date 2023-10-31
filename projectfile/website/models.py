@@ -15,8 +15,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(50), unique=True)
     phone = db.Column(db.String(30), unique=True)
     password = db.Column(db.String(150), nullable=False)
-    comments = db.relationship('Comment', backref='user')
-    bookings = db.relationship('Booking', backref='user')
+    comments = db.relationship('Comment', backref='users')
+    bookings = db.relationship('Booking', backref='users')
     def __repr__(self):
         return f"User: {self.firstname}"
     def get_id(self):
@@ -43,9 +43,10 @@ class Event(db.Model):
     event_type = db.Column(db.String(30))
     image = db.Column(db.LargeBinary)
     description = db.Column(db.Text)
-    comments = db.Column(db.Text)
-    comment_id = db.relationship('Comment', backref='event')
-    booking_id = db.relationship('Booking', backref='event')
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    users = db.relationship('User', backref='events')
+    comments = db.relationship('Comment', backref='events')
+    bookings = db.relationship('Booking', backref='events')
     def __repr__(self):
         return f"Event: {self.event_id} {self.event_name}"
 
