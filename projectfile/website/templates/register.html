@@ -3,15 +3,15 @@
 <form method="POST">
 <div class="background-color-register">
     <div class="margin-content">
-    <body>
-        <br><br><br><br><br>
+    <body><br><br><br><br>
+        <h2 style="text-align:center;margin-left:-30px">Sign Up</h2>
 {% endblock %}
 {% block content %}
         <br>
         <div class="wrap-register">
             <table>
                 <tr>
-                    <th><table>
+                    <th>
                         <tr style="margin-left:30px;">
                             <th><label>Given Name</label></th>
                             <th></th>
@@ -84,7 +84,7 @@
             <table>
                 <tr>
                     <!-- User can switch to Login if they have an account -->
-                    <th><input type="submit" value="Sign Up" class="log-in-sign-in-button"></th>
+                    <th><a href=""><input type="submit" value="Sign Up" class="log-in-sign-in-button"></a></th>
                     <th><p style="padding-left:50px;">Have an account?</p></th>
                     <th style="width:5px;"></th>
                     <th><a href="login.html"><p style="color:rgb(0, 89, 255);">Log In</p></a></th>
@@ -97,6 +97,6 @@
     </body>
     </div>
 </div>
-<br><br><br><br>
 </form>
 {% endblock %}
+    
