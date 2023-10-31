@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block header %}
+{% endblock %}
+{% block content %}
+<body>
+    <br><br><br><br>
+    <div class="margin-content">
+    <h2 style="text-align:center;font-weight:bold;margin-left:-45px">My Events</h2>
+    <br>
+    <div class="content">
+     {% if events %}
+        {% for event in events %}
+        <a href="content-page.html">
+            <div class="wrap">
+                <div id="card">
+                <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
+                    <p class="event-title-i">{{ event.event_name }}</p>
+                    <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
+                    <p class="event-price">{{ event.price }}</p>
+                    <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+     {% else %}
+     <table>
+        <tr>
+            <th><p>You have no events created yet.</p></th>
+            <th style="width:4px;"></th>
+            <th><a href="createevent.html"><p style="color:rgb(15, 178, 107)">Create one</p></a></th>
+        </tr>
+     </table>
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+     {% endif %}
+    </div>
+    </div>
+</body>
+<br><br>
+{% endblock %}
