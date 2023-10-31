@@ -38,3 +38,8 @@ def payment():
 def bookings():
     return render_template('booking.html')
 
+# Route for Forgot Password Page
+@main_bp.route('/Forgot_Password.html')
+def forgotpassword():
+    return render_template('Forgot_Password.html')
+
