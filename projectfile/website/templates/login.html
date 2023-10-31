@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 {% block header %}
 <form method="POST">
-<div class="background-color-login">
-    <body><br><br><br><br>
-        <h2 style="text-align:center">Log In</h2><br>
-    </body>
 {% endblock %}
 {% block content %}
+<div class="background-color-login">
+    <br><br><br><br>
+<h2 style="text-align:center">Log In</h2><br>
 <body>
 <div class="margin-content">
         <div class="wrap-login">
             <table>
                 <tr>
-                    <th><table>
+                    <th>
                         <tr style="margin-left:30px;">
                             <th><label>Email address</label></th>
                             <th></th>
@@ -32,7 +31,8 @@
                         </tr>
                         <tr>
                             <th style="height:30px;"></th>
-                        </tr>
+                        </table>
+                    </tr>
                 </tr>
             </table>
             <br>
@@ -51,14 +51,19 @@
         </div>
         <br>
         <br>
-        <!-- Reset password -->
-        <p class="forgot-password1">Forgot Password?</p>
-        <a href=""><p class="forgot-password">Reset your Password here</p></a>
+         <!-- Reset password -->
+        <table>
+            <tr>
+                <th style="width:319px;"></th>
+                <th><p class="forgot-password1">Forgot Password?</p></th>
+            </tr>
+            <tr>
+                <th style="width:319px;"></th>
+                <th><a href="Forgot_Password.html"><p class="forgot-password">Reset your Password here</p></a></th>
+            </tr>
+        </table>
     </div>
     </body>
 </div>
-<br>
-<br>
-<br>
 </form>
 {% endblock %}
