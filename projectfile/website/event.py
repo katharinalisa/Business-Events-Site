@@ -62,7 +62,7 @@ def create():
                 event_type=event_type,
                 description=description,
                 comments=comments,
-                image=image
+                image=db_file_path
             )
 
             db.session.add(new_event)
