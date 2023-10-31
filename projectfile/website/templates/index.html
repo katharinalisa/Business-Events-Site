@@ -111,9 +111,9 @@
                         <div id="card">
                             <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
                             <p class="event-title-i">{{ event.event_name }}</p>
-                            <p class="event-location">{{ event.street }}</p>
+                            <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
                             <p class="event-price">{{ event.price }}</p>
-                            <p class="event-date">{{ event.date }}</p>
+                            <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
                         </div>
                     </div>
                 </a>
