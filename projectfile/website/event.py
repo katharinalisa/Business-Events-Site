@@ -2,15 +2,14 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from .models import Event, Comment
 from .forms import EventForm, CommentForm
 from . import db
-from flask import Flask, flash, redirect, render_template, request, url_for
 from datetime import datetime
 import sqlalchemy.exc
 from flask_login import LoginManager
 import os
 from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
+import base64
 
-  # Flask Blueprint for Event Routes
 destbp = Blueprint('event', __name__)
 
 @destbp.route('/<event_id>', methods=['GET', 'POST'])
@@ -30,10 +29,10 @@ def create():
         suburb = form.suburb.data
         postcode = form.postcode.data
         state = form.state.data
-        price = form.price.data  # Assuming price is a float column
+        price = form.price.data 
         date_str = form.date.data
         date = datetime.strptime(date_str, '%Y-%m-%d').date()
-        starttime_str = form.starttime.data  # Assuming it's in the format 'HH:MM'
+        starttime_str = form.starttime.data 
         endtime_str = form.endtime.data
         starttime = datetime.strptime(starttime_str, '%H:%M').time()
         endtime = datetime.strptime(endtime_str, '%H:%M').time()
@@ -41,8 +40,7 @@ def create():
         event_category = form.event_category.data
         event_type = form.event_type.data
         description = form.description.data
-        comments = form.comments.data
-        image = db_file_path
+        user_id = current_user.user_id
 
         if len(event_name) < 4:
             flash('Event name is too short', category='error')
@@ -61,8 +59,8 @@ def create():
                 event_category=event_category,
                 event_type=event_type,
                 description=description,
-                comments=comments,
-                image=db_file_path
+                image=db_file_path,
+                user_id=user_id
             )
 
             db.session.add(new_event)
@@ -73,39 +71,29 @@ def create():
     return render_template('createevent.html', form=form)
 
 
-# Function to handle file uploads.
-# Checks if the form contains an image file, saves it to the server,
-# and returns the database path for the saved image. Returns None if no file is present.
-
 def check_upload_file(form):
     fp = form.image.data
-    if fp is not None:
-        filename = fp.filename
-        BASE_PATH = os.path.dirname(__file__)
-        upload_path = os.path.join(BASE_PATH, 'static/images', secure_filename(filename))
-        db_upload_path = '/static/images/' + secure_filename(filename)
-        fp.save(upload_path)
-        return db_upload_path
-    else:
-        return None
+    filename = secure_filename(fp.filename)
+  #get the current path of the module file… store image file relative to this path  
+    BASE_PATH = os.path.dirname(__file__)
+  #upload file location – directory of this file/static/image
+    upload_path = os.path.join(BASE_PATH, 'static/images', filename)
+  #store relative path in DB as image location in HTML is relative
+    db_upload_path = '/static/images/' + filename
+  #save the file and return the db upload path
+    fp.save(upload_path)
+    return db_upload_path
+
 
 @destbp.route('/<event_id>/comment', methods=['GET', 'POST'])  
 @login_required
 def comment(event_id):  
     form = CommentForm()  
-    #get the destination object associated to the page and the comment
     destination = db.session.scalar(db.select(Event).where(Event.event_id==event_id))
     if form.validate_on_submit():  
-      #read the comment from the form
       comment = Comment(text=form.text.data, destination=destination,
                         user=current_user) 
-
-      #here the back-referencing works - comment.destination is set
-      # and the link is created
       db.session.add(comment) 
       db.session.commit() 
-      #flashing a message which needs to be handled by the html
       flash('Your comment has been added', 'success')  
-      # print('Your comment has been added', 'success') 
-    # using redirect sends a GET request to destination.show
     return redirect(url_for('event.show', event_id=event_id))
