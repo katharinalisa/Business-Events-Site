@@ -2,30 +2,29 @@
 {% block header %}
 
 <script>
-   
+
     const category1 = document.querySelectorAll('.icon1');
     const category2 = document.querySelectorAll('.icon2');
     const category3 = document.querySelectorAll('.icon3');
     const category4 = document.querySelectorAll('.icon4');
     const category5 = document.querySelectorAll('.icon5');
     
-    
+
     const eventCards = document.querySelectorAll('.event-card');
 
-  
+    // Add a click event listener to each category button
     category1.addEventListener('click', () => filterEvents('Marketing'));
     category2.addEventListener('click', () => filterEvents('Finance'));
     category3.addEventListener('click', () => filterEvents('Startup'));
     category4.addEventListener('click', () => filterEvents('Real Estate'));
     category5.addEventListener('click', () => filterEvents('Education'));
-    
 
-
+    // Function to filter events
     function filterEvents(category) {
         eventCards.forEach(card => {
-            const eventCategory = card.getAttribute('data-category');
+            const event_category = card.getAttribute('data-category');
 
-            if (category === 'All' || eventCategory === category) {
+            if (category === 'All' || event_category === category) {
                 card.style.display = 'block';  // Show the card
             } else {
                 card.style.display = 'none';  // Hide the card
@@ -35,38 +34,37 @@
 </script>
 
 <div class="background-color">
-    <div class="margin-content">
-        <br><br><br><br><br>
-        <p style="margin-left:4px;color:black;">It is time to build your dream<br>business</p>
-        <br><br>
-        <table>
-          <div class="margin-top-content">
-            <tr>
-                <th><div class="header"><p><b>Greater Brisbane Business Classes</b></p></div></th>
-                <th></th> 
-                <!-- Image of business man on homepage -->
-                <th><div><img src="{{ url_for('static', filename='images/business image title.png') }}" class="title-image"></div></th>
-            </tr>
-          </div>
-        </table>
-        <br><br>
-        <div class="margin-top-content">
-        <div class="points">
-          <p><b>+ learn how to build a successful business<br>+ meet successful business owners<br>+ expand your knowledge<b></p> 
-        </div>
-        </div>
-        <br>
-        <a href="#section1"><button class="exploreevents">Explore events</button></a>
-        <p style="height:60px;"></p>
+<div class="margin-content">
+    <br><br><br><br><br>
+    <p style="margin-left:4px;color:black;">It is time to build your dream<br>business</p>
+    <br><br>
+    <table>
+      <div class="margin-top-content">
+        <tr>
+            <th><div class="header"><p><b>Greater Brisbane Business Classes</b></p></div></th>
+            <th></th> 
+            <!-- Image of business man on homepage -->
+            <th><div><img src="{{ url_for('static', filename='images/business image title.png') }}" class="title-image"></div></th>
+        </tr>
+      </div>
+    </table>
+    <br><br>
+    <div class="margin-top-content">
+    <div class="points">
+      <p><b>+ learn how to build a successful business<br>+ meet successful business owners<br>+ expand your knowledge<b></p> 
     </div>
     </div>
-    <div class="margin-content">
-    {% endblock %}
-    {% block content %} 
-        <br>
-        <br>
-            <h1 class="aboutus"><b>About us</b></h1>
-        <!-- Text will be replaced in Assignment 3 -->
+    <br>
+    <a href="#section1"><button class="exploreevents">Explore events</button></a>
+    <p style="height:60px;"></p>
+</div>
+</div>
+<div class="margin-content">
+{% endblock %}
+{% block content %} 
+    <br>
+    <br>
+        <h1 class="aboutus"><b>About us</b></h1>
         <div class="wrap-text"><p>Welcome to our event management app!<br>Our service is dedicated to offer a range of popular business events around Greater Brisbane and Brisbane City. Take yourself time to discover our latest events and join our newsletter to get informed about updates and new events! Need to reach out to us? Our administrators are here to assist you with any questions or inquiries you might have. We value your feedback and are dedicated to making your experience as seamless as possible. Thank you for using Brisbuis!</p></div>
     </div>
     <br>
