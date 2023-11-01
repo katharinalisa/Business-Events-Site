@@ -63,7 +63,12 @@ class Comment(db.Model):
 class Booking(db.Model):
     __tablename__ = 'bookings'
     booking_id = db.Column(db.Integer, primary_key=True)
-    event_name = db.Column(db.String(120))
+    booking_ref = db.Column(db.String(10))
     booking_datetime = db.Column(db.DateTime, default=datetime.now())
+    event_name = db.relationship('Event', backref='bookings')
+    num_tickets = db.relationship('Event', backref='bookings')
+    price = db.relationship('Event', backref='bookings')
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.event_id'))
+    def __repr__(self):
+        return f"Booking: {self.booking_ref}"
