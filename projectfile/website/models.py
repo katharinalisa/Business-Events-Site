@@ -41,29 +41,25 @@ class Event(db.Model):
     tickets_available = db.Column(db.Integer)
     event_category = db.Column(db.String(50))
     event_type = db.Column(db.String(30))
-    image = db.Column(db.LargeBinary)
+    image = db.Column(db.String) 
     description = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     users = db.relationship('User', backref='events')
     comments = db.relationship('Comment', backref='events')
-    bookings = db.relationship('Booking', backref='events')
+    bookings = db.relationship('Booking', backref='bookings')
     def __repr__(self):
-        return f"Event: {self.event_id} {self.event_name}"
+        return f"Event: {self.event_name}"
 
-class Booking(db.Model):
-    __tablename__ = 'bookings'
-    booking_id = db.Column(db.Integer, primary_key=True)
-    booking_ref = db.Column(db.String(10))
-    booking_datetime = db.Column(db.DateTime, default=datetime.now())
-    event_name = db.Column(db.String(200))
-    price = db.Column(db.String(9999))
-    tickets_available = db.Column(db.String(999))
-    image = db.Column(db.String(999))
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    comment_id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(120))
+    date_time = db.Column(db.DateTime, default=datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.event_id'))
     def __repr__(self):
-        return f"Booking: {self.booking_ref}"
-
+        return f"Comment: {self.text}"
+    
 class Booking(db.Model):
     __tablename__ = 'bookings'
     booking_id = db.Column(db.Integer, primary_key=True)
