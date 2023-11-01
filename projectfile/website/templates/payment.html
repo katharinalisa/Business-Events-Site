@@ -4,12 +4,13 @@
     <div class="margin-content">
     <body>
         <br><br><br><br><br>
+        <h2 style="text-align:center;margin-left:-10px;">Payment</h2><br>
 {% endblock %}
 {% block content %}
         <table>
             <tr><table>
                 <tr>
-                    <!-- Summary of event ticket/s being booked -->
+                <!-- Summary of event ticket/s being booked -->
                     <th><table class="wrap-summary">
                         <tr>
                             <th><p class="wrap-summary-content">Booking summary</p></th>
@@ -17,24 +18,22 @@
                         <tr>
                             <th colspan="3"><hr class="hr"></th>
                         </tr>
+                        {% if events %}
                         <tr>
-                            <th><a href=""><p class="wrap-summary-content1" style="color:rgb(0, 89, 255);font-weight:lighter;">Edit</p></a></th>
-                        </tr>
-                        <tr>
-                            <th><p class="wrap-summary-content1"style="font-weight:lighter;line-height:1.3em;height:4em;overflow:hidden;">2 x Develop a Successful Artificial Intelligence Startup Today! Entrepreneur</p></th>
+                            <th><p class="wrap-summary-content1"style="font-weight:lighter;line-height:1.3em;height:4em;overflow:hidden;">{{ event.event_name }}</p></th>
                         </tr>
                         <tr>
                             <th><p class="wrap-summary-content1">DATE & TIME</p></th>
                         </tr>
                         <tr>
-                            <th><p class="wrap-summary-content1" style="font-weight:lighter;">Sun, 17 Sep 2023 1:00 PM - 5:00 PM</p></th>
+                            <th><p class="wrap-summary-content1" style="font-weight:lighter;">{{ event.date }} {{ event.starttime }} {{ event.endtime }}</p></th>
                         </tr>
                         <tr>
                             <th colspan="3"><hr class="hr"></th>
                         </tr>
                         <tr>
                             <th><p class="wrap-summary-content1">SUBTOTAL</p></a></th>
-                            <td class="wrap-summary-content1" style="float:right;">$210.66</td>
+                            <td class="wrap-summary-content1" style="float:right;">{{ event.price }}</td>
                         </tr>
                         <tr>
                             <th><p class="wrap-summary-content1">GST</p></th>
@@ -45,8 +44,9 @@
                         </tr>
                         <tr>
                             <th><p class="wrap-summary-content1">TOTAL</p></th>
-                            <td class="wrap-summary-content1" style="float:right;">$210.66</td>
+                            <td class="wrap-summary-content1" style="float:right;">{{ event.price }}</td>
                         </tr>
+                        {% endif %}
                         <tr>
                             <th><br></th>
                         </tr>
@@ -54,9 +54,13 @@
                 </tr>
                 <tr>
                     <!-- Payment below summary-->
+                    <!-- Please do not enter any personal information here -->
                     <th><table class="wrap-payment">
                         <tr>
                             <th><h3 class="payment-method">Payment Method</h3></th>
+                        </tr>
+                        <tr>
+                            <th><p style="color:rgb(207, 27, 27);margin-left:30px;">Keep payment details empty</p></th>
                         </tr>
                         <tr>
                             <th div class="payment-method">
@@ -68,7 +72,9 @@
                         </tr>
                         <tr>
                             <th><img src="{{ url_for('static', filename='images/lock icon.jpeg') }}" class="lock-icon"></th>
-                            <th colspan="2"><h3 class="paymentdetails">Payment Details</h3></th>
+                            <th colspan="1"></th>
+                            <th><h3 class="paymentdetails" style="margin-left:-270px;">Payment Details</h3></th>
+                    
                         </tr>
                         <tr>
                             <th colspan="4"><form>
@@ -97,7 +103,11 @@
                             </th>
                         </tr>
                         <tr>
-                            <th colspan="3"><a href="/"><input type="submit" value="PROCEED TO PAY" class="payment-button"></a></th>
+                            <th colspan="3">
+                                <form method="POST">
+                                    <input type="submit" class="payment-button" value="Proceed to Payment">
+                                </form>
+                            </th>
                         </tr>
                     </table></th>
                 </tr>
