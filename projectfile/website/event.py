@@ -85,6 +85,15 @@ def check_upload_file(form):
     return db_upload_path
 
 
+@destbp.route('/payment.html', methods=['GET', 'POST'])
+@login_required
+def payment():
+    event_id = request.args.get('event_id')
+    event = Event.query.get(event_id)
+    events = [event]
+    booking_form = BookingForm(request.form)
+#
+
 @destbp.route('/<event_id>/comment', methods=['GET', 'POST'])  
 @login_required
 def comment(event_id):  
