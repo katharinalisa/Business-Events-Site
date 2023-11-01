@@ -66,8 +66,8 @@
     <br>
         <h1 class="aboutus"><b>About us</b></h1>
         <div class="wrap-text"><p>Welcome to our event management app!<br>Our service is dedicated to offer a range of popular business events around Greater Brisbane and Brisbane City. Take yourself time to discover our latest events and join our newsletter to get informed about updates and new events! Need to reach out to us? Our administrators are here to assist you with any questions or inquiries you might have. We value your feedback and are dedicated to making your experience as seamless as possible. Thank you for using Brisbuis!</p></div>
-    </div>
-    <br>
+</div>
+<br>
  <body>
  <br><br>
   <div class="wrap-content">
@@ -88,7 +88,7 @@
     <table class="table-categories">
         <tr>
             <!-- Description of icons -->
-            <th class="marketing" style="color:black;">Sales & Marketing</th>
+            <th class="marketing" id="section1" style="color:black;">Sales & Marketing</th>
             <th class="finance" style="color:black;">Finance</th>
             <th class="startup" style="color:black;">Startup</th>
             <th class="realestate" style="color:black;">Real Estate</th>
@@ -101,7 +101,6 @@
     </div>
     <div class="scrollmenu">
         {% if events %}
-        
         <div class="event-card" data-category="{{ event_category }}"></div>
             {% for event in filtered_events %}
                 <a href="content-page.html">
@@ -120,138 +119,25 @@
             <p>There are currently no upcoming events.</p>
         </div>
         {% endif %}
-
-        
-        <!-- Links will be finalised in Assignment 3 (no broken links) -->
-        <a href="hello.html">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F572269679%2F97028956325%2F1%2Foriginal.20230809-223512?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C22%2C810%2C405&s=f217d5d09a7a64c0cdd0143f0967ee0f" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Business Networking Lounge</p>
-                <p class="event-location">200 Main Street Kangaroo Point, QLD 4169</p>
-                <p class="event-price">$0 - $10</p>
-                <p class="event-date">Wed, 6 Sep 2023 6:00 PM - 7:30 PM</p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F580460759%2F977459492873%2F1%2Foriginal.20230822-133128?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C1600%2C800&s=62e6818585e7cac2aea54615d5540fe4" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Resume & LinkedIn Workshops</p>
-                <p class="event-location">Building 21C, University of Queensland Saint Lucia, QLD 4072</p>
-                <p class="event-price">$5</p>
-                <p class="event-date"><b>Tue, 5 Sep 2023 11:00 AM - 4:00 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F354960879%2F199988229301%2F1%2Foriginal.20220903-134804?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C22%2C3000%2C1500&s=776c71e7ff19a20e9efb28a5a8f06894" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">How The Top 1% Of Leaders Manage Their Time Like Clockwork Using T5 System</p>
-                <p class="event-location">Online (Zoom)</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Mon, Sep 4, 2023 10:00 AM </b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F354960879%2F199988229301%2F1%2Foriginal.20220903-134804?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C22%2C3000%2C1500&s=776c71e7ff19a20e9efb28a5a8f06894" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">How The Top 1% Of Leaders Manage Their Time Like Clockwork Using T5 System</p>
-                <p class="event-location">Online (Zoom)</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Mon, Sep 4, 2023 10:00 AM </b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F354960879%2F199988229301%2F1%2Foriginal.20220903-134804?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C22%2C3000%2C1500&s=776c71e7ff19a20e9efb28a5a8f06894" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">How The Top 1% Of Leaders Manage Their Time Like Clockwork Using T5 System</p>
-                <p class="event-location">Online (Zoom)</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Mon, Sep 4, 2023 10:00 AM </b></p>
-            </div>
-            </div>
-        </a>
-      </div>
-      <br>
-      <br>
-      <br>
+    </div>
+      <br><br><br><br><br><br><br><br>
       <div class="events">
         <p>Explore new events</p>
       </div>
       <div class="scrollmenu">
-        <a href="">
+        {% for event in events %}
+        <a href="content-page.html">
             <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F580213879%2F359592702357%2F1%2Foriginal.20230822-034636?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C95%2C2240%2C1120&s=51bcc6852e8cfdaadde25de57d47c0d6" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Women's Biz Global 'Business Builders Bootcamp' Weekly Webinar</p>
-                <p class="event-location">Online</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Wed, 25 Oct 2023 7:00 PM - 8:00 PM</b></p>
-            </div>
+                <div id="card">
+                <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
+                    <p class="event-title-i">{{ event.event_name }}</p>
+                    <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
+                    <p class="event-price">{{ event.price }}</p>
+                    <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
+                </div>
             </div>
         </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F561425099%2F1487465226443%2F1%2Foriginal.20230725-035001?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=bcf1cbe09a1331428c4e7cfc4b9492f2" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Entrepreneur Summit Brisbane</p>
-                <p class="event-location">119 Lamington Street New Farm, QLD 4005</p>
-                <p class="event-price" >$99 - $999</p>
-                <p class="event-date"><b>Tue, 26 Sep 2023 6:00 PM - 9:00 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F528907049%2F1374553689893%2F1%2Foriginal.20230604-215825?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=b4247c1165588aebc1de9c2b9524dff0" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">A Golden Success | Small Business Networking Event | Brisbane</p>
-                <p class="event-location">50 Morgan Street Fortitude Valley Brisbane, QLD 7081</p>
-                <p class="event-price">From $86.02</p>
-                <p class="event-date"><b>Thu, 28 Sep 2023 6:30 PM - 9:30 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F593031239%2F1632274928003%2F1%2Foriginal.20230908-011410?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=e55842a8f14486e4047f167991f2c215" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Business Growth Workshop</p>
-                <p class="event-location">Online</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Tue, 19 Sep 2023 6:00 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F593031239%2F1632274928003%2F1%2Foriginal.20230908-011410?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=e55842a8f14486e4047f167991f2c215" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Business Growth Workshop</p>
-                <p class="event-location">Online</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Tue, 19 Sep 2023 6:00 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F593031239%2F1632274928003%2F1%2Foriginal.20230908-011410?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=e55842a8f14486e4047f167991f2c215" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Business Growth Workshop</p>
-                <p class="event-location">Online</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Tue, 19 Sep 2023 6:00 PM</b></p>
-            </div>
-            </div>
-        </a>
+        {% endfor %}
       </div>
       <br>
       <br>
@@ -260,216 +146,49 @@
         <p>Explore free events</p>
       </div>
       <div class="scrollmenu">
-        <a href="">
+      {% if events %}
+        {% for event in events %}
+            {% if event.price == "$0" %}
+            <a href="content-page.html">
             <div class="wrap">
             <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F586946119%2F211402342691%2F1%2Foriginal.20230831-011205?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C164%2C2046%2C1023&s=2a626839a6c602867de5116d7eaf9edd" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">QUT Entrepreneurship Showcase</p>
-                <p class="event-location">QUT P Block, 2 George Street Brisbane City, QLD 4000</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Wed, 20 Sep 2023 6:00 PM - 8:00 PM</b></p>
+            <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
+                <p class="event-title-i">{{ event.event_name }}</p>
+                <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
+                <p class="event-price">{{ event.price }}</p>
+                <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
             </div>
             </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F568390259%2F488336315061%2F1%2Foriginal.20230803-235837?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=d44e9687070af4e65b89815b5a341058" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Navigating small business grants</p>
-                <p class="event-location">16 Aspinall Street Nundah, QLD 4012</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Wed, 13 Sep 2023 9:15 AM - 11:30 AM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F593031239%2F1632274928003%2F1%2Foriginal.20230908-011410?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=e55842a8f14486e4047f167991f2c215" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Business Growth Workshop</p>
-                <p class="event-location">Online</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Tue, 19 Sep 2023 6:00 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F412012959%2F211402342691%2F1%2Foriginal.20210215-044010?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C60%2C1920%2C960&s=4dfd67d13f88538b0ac8739ca16d2afe" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">QUT Entrepreneurship's Open Pitch Night</p>
-                <p class="event-location">foundry GP, 2 George Street B Block, Level 2 Brisbane City, QLD 4001</p>
-                <p class="event-price">Free</p>
-                <p class="event-date">Wed, 4 Oct 2023 6:00 PM - 7:00 PM<b></b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F412012959%2F211402342691%2F1%2Foriginal.20210215-044010?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C60%2C1920%2C960&s=4dfd67d13f88538b0ac8739ca16d2afe" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">QUT Entrepreneurship's Open Pitch Night</p>
-                <p class="event-location">foundry GP, 2 George Street B Block, Level 2 Brisbane City, QLD 4001</p>
-                <p class="event-price">Free</p>
-                <p class="event-date">Wed, 4 Oct 2023 6:00 PM - 7:00 PM<b></b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F412012959%2F211402342691%2F1%2Foriginal.20210215-044010?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C60%2C1920%2C960&s=4dfd67d13f88538b0ac8739ca16d2afe" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">QUT Entrepreneurship's Open Pitch Night</p>
-                <p class="event-location">foundry GP, 2 George Street B Block, Level 2 Brisbane City, QLD 4001</p>
-                <p class="event-price">Free</p>
-                <p class="event-date">Wed, 4 Oct 2023 6:00 PM - 7:00 PM<b></b></p>
-            </div>
-            </div>
-        </a>
+            </a>
+            {% endif %}
+        {% endfor %}
+      {% else %}
+        <p>There are currently no free events.</p>
+      {% endif %}
       </div>
-      <br>
-      <br>
       <br>
       <br>
       <div class="events">
         <p>Explore all events</p>
       </div>
       <div class="scrollmenu">
+        {% for event in events %}
         <a href="content-page.html">
             <div class="wrap">
                 <div id="card">
-                <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F335194989%2F233567016891%2F1%2Foriginal.20220108-141604?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C910%2C455&s=f63c644bd3e803e16caa952069fb9f6c" style="width:260px;height:130px;"></div>
-                    <p class="event-title-i">Develop a Successful Artificial Intelligence Startup Today! Entrepreneur</p>
-                    <p class="event-location">Virtual Workshop Brisbane, QLD</p>
-                    <p class="event-price">From $105.33</p>
-                    <p class="event-date">Sun, 17 Sep 2023 1:00 PM - 5:00 PM</p>
+                <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
+                    <p class="event-title-i">{{ event.event_name }}</p>
+                    <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
+                    <p class="event-price">{{ event.price }}</p>
+                    <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
                 </div>
-                </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F572269679%2F97028956325%2F1%2Foriginal.20230809-223512?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C22%2C810%2C405&s=f217d5d09a7a64c0cdd0143f0967ee0f" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Business Networking Lounge</p>
-                <p class="event-location">200 Main Street Kangaroo Point, QLD 4169</p>
-                <p class="event-price">$0 - $10</p>
-                <p class="event-date">Wed, 6 Sep 2023 6:00 PM - 7:30 PM</p>
-            </div>
             </div>
         </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F580460759%2F977459492873%2F1%2Foriginal.20230822-133128?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C1600%2C800&s=62e6818585e7cac2aea54615d5540fe4" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Resume & LinkedIn Workshops</p>
-                <p class="event-location">Building 21C, University of Queensland Saint Lucia, QLD 4072</p>
-                <p class="event-price">$5</p>
-                <p class="event-date"><b>Tue, 5 Sep 2023 11:00 AM - 4:00 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F354960879%2F199988229301%2F1%2Foriginal.20220903-134804?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C22%2C3000%2C1500&s=776c71e7ff19a20e9efb28a5a8f06894" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">How The Top 1% Of Leaders Manage Their Time Like Clockwork Using T5 System</p>
-                <p class="event-location">Online (Zoom)</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Mon, Sep 4, 2023 10:00 AM </b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F580213879%2F359592702357%2F1%2Foriginal.20230822-034636?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C95%2C2240%2C1120&s=51bcc6852e8cfdaadde25de57d47c0d6" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Women's Biz Global 'Business Builders Bootcamp' Weekly Webinar</p>
-                <p class="event-location">Online</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Wed, 25 Oct 2023 7:00 PM - 8:00 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F561425099%2F1487465226443%2F1%2Foriginal.20230725-035001?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=bcf1cbe09a1331428c4e7cfc4b9492f2" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Entrepreneur Summit Brisbane</p>
-                <p class="event-location">119 Lamington Street New Farm, QLD 4005</p>
-                <p class="event-price">$99 - $999</p>
-                <p class="event-date"><b>Tue, 26 Sep 2023 6:00 PM - 9:00 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F528907049%2F1374553689893%2F1%2Foriginal.20230604-215825?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=b4247c1165588aebc1de9c2b9524dff0" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">A Golden Success | Small Business Networking Event | Brisbane</p>
-                <p class="event-location">50 Morgan Street Fortitude Valley Brisbane, QLD 7081</p>
-                <p class="event-price">From $86.02</p>
-                <p class="event-date"><b>Thu, 28 Sep 2023 6:30 PM - 9:30 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F593031239%2F1632274928003%2F1%2Foriginal.20230908-011410?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=e55842a8f14486e4047f167991f2c215" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Business Growth Workshop</p>
-                <p class="event-location">Online</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Tue, 19 Sep 2023 6:00 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F586946119%2F211402342691%2F1%2Foriginal.20230831-011205?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C164%2C2046%2C1023&s=2a626839a6c602867de5116d7eaf9edd" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">QUT Entrepreneurship Showcase</p>
-                <p class="event-location">QUT P Block, 2 George Street Brisbane City, QLD 4000</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Wed, 20 Sep 2023 6:00 PM - 8:00 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F568390259%2F488336315061%2F1%2Foriginal.20230803-235837?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=d44e9687070af4e65b89815b5a341058" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Navigating small business grants</p>
-                <p class="event-location">16 Aspinall Street Nundah, QLD 4012</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Wed, 13 Sep 2023 9:15 AM - 11:30 AM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F593031239%2F1632274928003%2F1%2Foriginal.20230908-011410?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=e55842a8f14486e4047f167991f2c215" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">Business Growth Workshop</p>
-                <p class="event-location">Online</p>
-                <p class="event-price">Free</p>
-                <p class="event-date"><b>Tue, 19 Sep 2023 6:00 PM</b></p>
-            </div>
-            </div>
-        </a>
-        <a href="">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F412012959%2F211402342691%2F1%2Foriginal.20210215-044010?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C60%2C1920%2C960&s=4dfd67d13f88538b0ac8739ca16d2afe" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">QUT Entrepreneurship's Open Pitch Night</p>
-                <p class="event-location">foundry GP, 2 George Street B Block, Level 2 Brisbane City, QLD 4001</p>
-                <p class="event-price">Free</p>
-                <p class="event-date">Wed, 4 Oct 2023 6:00 PM - 7:00 PM<b></b></p>
-            </div>
-            </div>
-        </a>
+        {% endfor %}
       </div>
       <br>
       <br>
       <br>
       <br>
+      </body>
 {% endblock %}
