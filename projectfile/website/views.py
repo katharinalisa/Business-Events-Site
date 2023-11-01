@@ -49,3 +49,14 @@ def myevents():
     events = Event.query.filter_by(user_id=user_id).all()
     return render_template('myevents.html', events=events)
 
+@main_bp.route('/delete_event/<int:event_id>', methods=['GET', 'POST'])
+def delete_event(event_id):
+    event = Event.query.get(event_id)
+    if event:
+        db.session.delete(event)
+        db.session.commit()
+        flash('Event deleted successfully', 'success')
+    else:
+        flash('Event not found', 'error')
+    return redirect(url_for('myevents'))
+
