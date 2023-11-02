@@ -9,6 +9,8 @@ import os
 from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
 import base64
+from flask import session
+from secrets import token_hex
 
 destbp = Blueprint('event', __name__)
 
