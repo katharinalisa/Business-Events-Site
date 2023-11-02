@@ -14,11 +14,9 @@ from secrets import token_hex
 
 destbp = Blueprint('event', __name__)
 
-@destbp.route('/<event_id>', methods=['GET', 'POST'])
-def show(event_id):
-    event = db.session.scalar(db.select(Event).where(Event.event_id==event_id))
-    form = CommentForm()    
-    return render_template('content-page.html', event=event, form=form)
+@destbp.route('/content-page')
+def content():
+    event_id = request.args.get('event_id')
 
 @destbp.route('/createevent.html', methods=['GET', 'POST'])
 @login_required
