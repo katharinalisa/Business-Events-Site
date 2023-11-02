@@ -114,3 +114,6 @@ def payment():
     event = Event.query.get(event_id)
     events = [event]
     booking_form = BookingForm(request.form)
+    if event_id is not None:
+        if request.method == 'POST':
+            print("test")
