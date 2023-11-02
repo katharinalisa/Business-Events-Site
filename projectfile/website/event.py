@@ -111,3 +111,6 @@ def comment(event_id):
 @login_required
 def payment():
     event_id = request.args.get('event_id')
+    event = Event.query.get(event_id)
+    events = [event]
+    booking_form = BookingForm(request.form)
