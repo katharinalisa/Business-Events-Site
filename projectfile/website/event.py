@@ -147,6 +147,8 @@ def payment():
         if request.method == 'POST':
             print("test")
 
+
+
 # On the content page, set the event_id in the session
 @destbp.route('/content-page/<int:event_id>')
 def content(event_id):
