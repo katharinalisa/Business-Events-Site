@@ -106,3 +106,8 @@ def comment(event_id):
       db.session.commit() 
       flash('Your comment has been added', 'success')  
     return redirect(url_for('event.show', event_id=event_id))
+
+@destbp.route('/payment.html', methods=['GET', 'POST'])
+@login_required
+def payment():
+    event_id = request.args.get('event_id')
