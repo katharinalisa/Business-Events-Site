@@ -30,6 +30,7 @@ class EventForm(FlaskForm):
     street = StringField("Street", validators=[InputRequired()])
     suburb = StringField("Suburb", validators=[InputRequired()])
     postcode = StringField("Postcode", validators=[InputRequired()])
+    state = StringField("State", validators=[InputRequired()])
     price = StringField("Price", validators=[InputRequired()])
     date = StringField("Date", validators=[InputRequired()])
     time = StringField("Time", validators=[InputRequired()])
