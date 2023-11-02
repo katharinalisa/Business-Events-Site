@@ -152,3 +152,9 @@ def payment():
 def content(event_id):
     session['selected_event_id'] = event_id
     return render_template('content-page.html', event_id=event_id)
+
+@destbp.route('/booking.html', methods=['GET'])
+def bookings():
+    event_id = request.args.get('event_id')  # Get the event_id from the query parameters
+    session['selected_event_id'] = event_id
+    return render_template('booking.html', event_id=event_id)
