@@ -27,7 +27,9 @@ class RegisterForm(FlaskForm):
   # Code to create the Event Form
 class EventForm(FlaskForm):
     event_name = StringField("Event Name", validators=[InputRequired()])
-    location = StringField("Location", validators=[InputRequired()])
+    street = StringField("Street", validators=[InputRequired()])
+    suburb = StringField("Suburb", validators=[InputRequired()])
+    postcode = StringField("Postcode", validators=[InputRequired()])
     price = StringField("Price", validators=[InputRequired()])
     date = StringField("Date", validators=[InputRequired()])
     time = StringField("Time", validators=[InputRequired()])
