@@ -92,6 +92,35 @@ def payment():
     event = Event.query.get(event_id)
     events = [event]
     booking_form = BookingForm(request.form)
+    if event_id is not None:
+        if request.method == 'POST':
+            print("test")
+            booking_ref = booking_form.booking_ref.data
+            booking_datetime = booking_form.booking_datetime.data
+            event_name = booking_form.event_name.data
+            price = booking_form.price.data
+            image = booking_form.image.data
+                
+            new_booking = Booking(
+                booking_ref=booking_ref,
+                booking_datetime=booking_datetime,
+                event_name=event_name,
+                price=price,
+                image=image,
+                event_id=event_id,  # Assign the event_id to the booking
+                user_id=current_user.user_id  # Assign the user_id to the booking
+            )
+
+            db.session.add(new_booking)
+            db.session.commit()
+            flash('Thank you for your purchase! You will receive a confirmation email shortly.', 'success')
+            return render_template('payment.html', event=event, events=events, booking_form=booking_form)
+        else:
+            pass
+    else:    
+        flash('An error occurred while proceeding to pay.', category='error')
+        return redirect(url_for('404.html'))
+    return render_template('payment.html', event=event, events=events, booking_form=booking_form)
 #
 
 @destbp.route('/<event_id>/comment', methods=['GET', 'POST'])  
