@@ -22,6 +22,7 @@ class RegisterForm(FlaskForm):
 
 class CommentForm(FlaskForm):
     text = TextAreaField('Comment')
+    author = StringField('Author')
     submit = SubmitField('Create')
 
 class EventForm(FlaskForm):
