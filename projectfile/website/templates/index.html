@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block header %}
-* Filters event cards based on selected category buttons.
 
 <script>
 
@@ -66,7 +65,7 @@
     <br>
     <br>
         <h1 class="aboutus"><b>About us</b></h1>
-        <div class="wrap-text"><p>Welcome to our event management app!<br>Our service is dedicated to offer a range of popular business events around Greater Brisbane and Brisbane City. Take yourself time to discover our latest events and join our newsletter to get informed about updates and new events! Need to reach out to us? Our administrators are here to assist you with any questions or inquiries you might have. We value your feedback and are dedicated to making your experience as seamless as possible. Thank you for using Brisbuis!</p></div>
+        <div class="wrap-text"><p>Welcome to our event management app!<br>Our service is dedicated to offer a range of popular business events around Greater Brisbane and Brisbane City. Take your time to discover our latest events and join our newsletter to get informed about updates and new events! Need to reach out to us? Our administrators are here to assist you with any questions or inquiries you might have. We value your feedback and are dedicated to making your experience as seamless as possible. Thank you for using Brisbuis!</p></div>
 </div>
 <br>
  <body>
@@ -98,98 +97,80 @@
     </table>
     <br><br><br><br>
     <div class="events">
-        <p><b>Explore upcoming events</b></p>
+        <p><b>Explore new events</b></p>
     </div>
     <div class="scrollmenu">
         {% if events %}
-        <div class="event-card" data-category="{{ event_category }}"></div>
-            {% for event in filtered_events %}
-                <a href="content-page.html">
-                    <div class="wrap">
-                        <div id="card">
-                            <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
-                            <p class="event-title-i">{{ event.event_name }}</p>
-                            <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
-                            <p class="event-price">{{ event.price }}</p>
-                            <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
-                        </div>
-                    </div>
-                </a>
-            {% endfor %}
-        {% else %}
-            <p>There are currently no upcoming events.</p>
-        </div>
-        {% endif %}
+            {% for event in events %}
+        <a href="{{ url_for('event.content', event_id=event.event_id) }}">
+            <div class="wrap">
+                <div id="card">
+                <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
+                     <p class="event-title-i">{{ event.event_name }}</p>
+                     <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
+                     <p class="event-price">{{ event.price }}</p>
+                     <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
+                 </div>
+            </div>
+        </a>
+        {% endfor %}
+    {% else %}
+        <p>There are currently no new events.</p>
+    {% endif %}
    </div>
-      <br><br><br><br><br><br><br><br>
-      <div class="events">
-        <p>Explore new events</p>
-      </div>
-      <div class="scrollmenu">
-        {% for event in events %}
-        <a href="content-page.html">
-            <div class="wrap">
-                <div id="card">
-                <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
-                    <p class="event-title-i">{{ event.event_name }}</p>
-                    <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
-                    <p class="event-price">{{ event.price }}</p>
-                    <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
-                </div>
-            </div>
+   <br>
+   <br>
+   <div class="events">
+     <p>Explore new events</p>
+   </div>
+   <div class="scrollmenu">
+   {% if events %}
+     {% for event in events %}
+         {% if event.price == "$0" %}
+         <a href="{{ url_for('event.content', event_id=event.event_id) }}">
+         <div class="wrap">
+         <div id="card">
+         <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
+             <p class="event-title-i">{{ event.event_name }}</p>
+             <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
+             <p class="event-price">{{ event.price }}</p>
+             <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
+        </div>
+        </div>
         </a>
-        {% endfor %}
-      </div>
-      <br>
-      <br>
-      <br>
-      <div class="events">
-        <p>Explore free events</p>
-      </div>
-      <div class="scrollmenu">
-      {% if events %}
-        {% for event in events %}
-            {% if event.price == "$0" %}
-            <a href="content-page.html">
-            <div class="wrap">
-            <div id="card">
-            <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
-                <p class="event-title-i">{{ event.event_name }}</p>
-                <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
-                <p class="event-price">{{ event.price }}</p>
-                <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
-            </div>
-            </div>
-            </a>
-            {% endif %}
-        {% endfor %}
-      {% else %}
-        <p>There are currently no free events.</p>
-      {% endif %}
-      </div>
-      <br>
-      <br>
-      <div class="events">
-        <p>Explore all events</p>
-      </div>
-      <div class="scrollmenu">
-        {% for event in events %}
-        <a href="content-page.html">
-            <div class="wrap">
-                <div id="card">
-                <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
-                    <p class="event-title-i">{{ event.event_name }}</p>
-                    <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
-                    <p class="event-price">{{ event.price }}</p>
-                    <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
-                </div>
-            </div>
-        </a>
-        {% endfor %}
-      </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      </body>
+        {% endif %}
+    {% endfor %}
+  {% else %}
+  <p>There are currently no free events.</p>
+  {% endif %}
+  </div>
+  <br>
+  <br>
+  <div class="events">
+    <p>Explore free events</p>
+  </div>
+  <div class="scrollmenu">
+  {% if events %}
+    {% for event in events %}
+    <a href="{{ url_for('event.content', event_id=event.event_id) }}">
+        <div class="wrap">
+         <div id="card">
+         <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
+             <p class="event-title-i">{{ event.event_name }}</p>
+             <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
+             <p class="event-price">{{ event.price }}</p>
+             <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
+        </div>
+    </div>
+</a>
+{% endfor %}
+{% else %}
+  <p>There are currently no free events.</p>
+{% endif %}
+</div>
+<br>
+<br> 
+<br>
+<br>
+</body>
 {% endblock %}
