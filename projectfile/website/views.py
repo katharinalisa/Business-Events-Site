@@ -18,10 +18,10 @@ def index():
     events = Event.query.all()
     return render_template('index.html', events=events, current_date=current_date)
 
-# Route for the event content page.
-@main_bp.route('/content-page.html')
-def event():
-    return render_template('content-page.html')
+
+@main_bp.route('/Contact Us.html')
+def contact():
+    return render_template('Contact Us.html')
     
 # Route for the event creation page.
 @main_bp.route('/createevent.html')
