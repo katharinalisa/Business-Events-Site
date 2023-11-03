@@ -58,11 +58,13 @@ class Event(db.Model):
 class Comment(db.Model):
     __tablename__ = 'comments'
     comment_id = db.Column(db.Integer, primary_key=True)
+    author_first_name = db.Column(db.String)
+    author_last_name = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     text = db.Column(db.Text)
     date_time = db.Column(db.DateTime, default=datetime.now())
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.event_id'))
-    users = db.relationship('User', backref='comments')
+    author = db.relationship('User', backref='comments')
     def __repr__(self):
         return f"Comment: {self.text}"
     
