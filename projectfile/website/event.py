@@ -171,6 +171,7 @@ def check_upload_file(form):
     return db_upload_path
 
 
+
 @destbp.route('/payment.html', methods=['GET', 'POST'])
 @login_required
 def payment():
@@ -185,9 +186,9 @@ def payment():
     if event_id is not None:
         if request.method == 'POST':
             booking_datetime = booking_form.booking_datetime.data
-            event_name = booking_form.event_name.data
-            price = booking_form.price.data
-            image = booking_form.image.data
+            event_name = event.event_name 
+            price = event.price
+            image = event.image
                 
             new_booking = Booking(
                 booking_ref=booking_ref,
@@ -201,38 +202,13 @@ def payment():
 
             db.session.add(new_booking)
             db.session.commit()
-            flash('Thank you for your purchase! You will receive a confirmation email shortly.', 'success')
+            flash('Thank you for your purchase! Your booking details have been saved to your booking history.', 'success')
             return render_template('payment.html', event=event, events=events, booking_form=booking_form)
   
     else:    
         flash('An error occurred while proceeding to pay.', category='error')
         return redirect(url_for('404.html'))
     return render_template('payment.html', event=event, events=events, booking_form=booking_form)
-#
-
-@destbp.route('/<event_id>/comment', methods=['GET', 'POST'])  
-@login_required
-def comment(event_id):  
-    form = CommentForm()  
-    destination = db.session.scalar(db.select(Event).where(Event.event_id==event_id))
-    if form.validate_on_submit():  
-      comment = Comment(text=form.text.data, destination=destination,
-                        user=current_user) 
-      db.session.add(comment) 
-      db.session.commit() 
-      flash('Your comment has been added', 'success')  
-    return redirect(url_for('event.show', event_id=event_id))
-
-@destbp.route('/payment.html', methods=['GET', 'POST'])
-@login_required
-def payment():
-    event_id = request.args.get('event_id')
-    event = Event.query.get(event_id)
-    events = [event]
-    booking_form = BookingForm(request.form)
-    if event_id is not None:
-        if request.method == 'POST':
-            print("test")
             
 
 @destbp.route('/booking.html', methods=['GET'])
