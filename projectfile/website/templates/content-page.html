@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block header %}
-    <form method="GET">
+{% endblock %}
+{% block content %}
+<form method="POST">
     <div class="background-color2">
     <div class="margin-content">
     <br><br><br><br>
@@ -20,8 +22,9 @@
         {% else %}
         <form method="POST" enctype="multipart/form-data" action="{{ url_for('event.edit_event', event_id=event.event_id) }}">
             <input type="hidden" name="event_id" value="{{ event.event_id }}">
-            <button type="submit">Edit event</button>
+            <button type="submit" class="btn btn-default">Edit event</button>
         </form>
+        <br>
         <form method="POST" action="{{ url_for('event.cancel_event', event_id=event.event_id) }}">
             <button type="submit" class="btn btn-danger">Cancel Event</button>
         </form>
@@ -99,6 +102,7 @@
             </tr>
         </table>
     </div>
+    
         <br>
         <br>
         <!-- Comment section -->
@@ -113,17 +117,17 @@
                     {% for comment in comments %}
                     <table>
                         <tr>
-                            <!-- First comment in comment section -->
-                            <th><table class="align-comments">
+                            <th><table>
                                 <tr>
-                                    {% if comment.users %}
-                                    <th><p class="align-author"><i> {{ comment.users.firstname }} {{ comment.users.lastname }}</i></p></th>
-                                    {% endif %}
+                        
+                                    <th><p class="align-author"><i> {{ comment.author_first_name }} {{ comment.author_last_name }}</i></p></th>
                                     <th><p class="align-comments">on</p></th>
-                                    
-                                    <th><p class="align-comments">{{ comment.date_time }}</p></th>
-        
+                                    <th><p class="align-comment_date">{{ comment.date_time }}</p></th>
+
+
+                                    {% if current_user.is_authenticated and current_user.user_id == comment.user_id %}
                                     <th><a href=""><p class="align-comments" style="color:rgb(15, 178, 107);">(Edit)</p></a></th>
+                                    {% endif %}
                                 </tr>
                             </table></th>
                         </tr>
@@ -131,6 +135,7 @@
                             <th class="align-comments-content"><p> {{ comment.text }} </p></th>
                         </tr>
                     </table>
+                    <hr style="border-color:grey;">
                     {% endfor %}
                     <br>
                     <br>
