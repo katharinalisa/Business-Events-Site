@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from os import path
 from flask import Blueprint, flash, render_template, request, url_for, redirect
+from flask_wtf.csrf import CSRFProtect
 
 db = SQLAlchemy()
 db_name = 'websitedb.sqlite'
@@ -16,8 +17,8 @@ def create_app():
     app = Flask(__name__)  # this is the name of the module/package that is calling this app
     # Should be set to false in a production environment
     app.debug = True
-    app.secret_key = 'somesecretkey'
     app.config['SECRET_KEY'] = 'somesecretkey'
+    app.secret_key = 'somesecretkey'
   
     #set the app configuration data 
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{path.join(app.instance_path, db_name)}'
@@ -46,6 +47,7 @@ def create_app():
 
     # create a user loader function takes userid and returns User
     # Importing inside the create_app function avoids circular references
+    from .models import Event, Booking, Comment
     from .models import User
     @login_manager.user_loader
     def load_user(user_id):
