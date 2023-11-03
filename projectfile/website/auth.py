@@ -46,18 +46,17 @@ def sign_up():
         if len(email) < 4:
             flash('Email is too short', category='error')
         elif len(firstname) < 2:
-            flash('Name should be at least 2 or morecharacters', category='error')
+            flash('Name should be at least 2 characters', category='error')
         elif len(lastname) < 2:
-            flash('Surname should be at least 2 or more characters', category='error')
+            flash('Surname should be at least 2 characters', category='error')
         elif len(password) < 8:
-            flash('Password must be at least 8 or more characters long', category='error')
+            flash('Password must be at least 8 characters long', category='error')
         elif len(phone) < 5:
             flash('Phone number is too short', category='error')
-
-        elif existing_user_phone:
-            flash('Phone number already exists. Please choose a different Phone number.', 'error')
         elif existing_user_email:
-            flash('Email already exists. Please choose a different Phone number.', 'error')
+            flash('Email already exists. Please choose a different one.', 'error')
+        elif existing_user_phone:
+            flash('Phone number already exists. Please choose a different one.', 'error')
         else:
         # Hash the password before storing it in the database
             hashed_password = generate_password_hash(password)
@@ -67,7 +66,7 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
 
-            flash('Account successfully created! You can now log in.', category='success')
+            flash('Account created!', category='success')
             return redirect(url_for('main.index'))
 
     return render_template('register.html', form=register_form)
@@ -80,11 +79,3 @@ def logout():
     logout_user()
     return redirect(url_for('auth.login'))
 
-
-@auth_bp.route('/payment.html', methods=['GET', 'POST'])
-def payment():
-    if request.method == 'POST':
-        cardholder = request.form.get('cardholder')
-        cardnumber = request.form.get('cardnumber')
-        expirydate = request.form.get('expirydate')
-        cvv = request.form.get('cvv')
