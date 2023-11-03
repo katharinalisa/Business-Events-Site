@@ -22,6 +22,45 @@ def content():
     return render_template('content-page.html', event=event, event_id=event_id)
 
 
+@destbp.route('/content-page.html', methods=['GET', 'POST'])
+@login_required
+def comment():
+    event_id = request.args.get('event_id')
+
+    if event_id:
+        event = Event.query.get(event_id)
+        if event:
+            comments = Comment.query.filter_by(event_id=event_id).order_by(Comment.date_time.desc()).all()
+            comment_form = CommentForm()
+            
+            if current_user.is_authenticated:
+                if comment_form.validate_on_submit():
+                    if text == "None":
+                        flash('Your comment cannot be added to the event. Please try again later.', 'error')
+                    else:  # Validate the form data
+                        text = comment_form.text.data
+                        author_id = current_user.user_id
+                        new_comment = Comment(text=text, user_id=author_id, event_id=event_id)
+                        db.session.add(new_comment)
+                        db.session.commit()
+                        flash('Your comment has been added', 'success')
+                        return redirect(url_for('event.comment', event_id=event_id))
+                else:
+                    # Form data did not pass validation
+                    print(comment_form.errors)
+            else:
+                flash('Please log in to leave a comment', 'error')
+        else:
+            flash('The event does not exist', category='error')
+        return render_template('content-page.html', event=event, comments=comments, comment_form=comment_form, event_id=event_id)
+    else:
+        flash('Invalid request', category='error')
+
+    flash('Please select an event to view', 'error')
+    return redirect(url_for('main.index'))
+
+
+
 @destbp.route('/createevent.html', methods=['GET', 'POST'])
 @login_required
 def create():

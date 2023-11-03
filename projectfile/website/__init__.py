@@ -17,6 +17,8 @@ def create_app():
     # Should be set to false in a production environment
     app.debug = True
     app.secret_key = 'somesecretkey'
+    app.config['SECRET_KEY'] = 'somesecretkey'
+  
     #set the app configuration data 
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{path.join(app.instance_path, db_name)}'
     #initialize db with flask app
@@ -29,7 +31,9 @@ def create_app():
     # Configures directory for serving static files
     STATIC_FOLDER = 'static' # This is the default value for serving static assets
     app.config['STATIC_FOLDER'] = STATIC_FOLDER
-  
+
+    app.config['WTF_CSRF_ENABLED'] = True
+    
     Bootstrap5(app)
     
     #initialize the login manager
