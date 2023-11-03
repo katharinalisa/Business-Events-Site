@@ -2,6 +2,9 @@ from flask import Blueprint
 from flask import Blueprint, flash, render_template, request, url_for, redirect
 from .models import Event
 from datetime import datetime, timedelta
+from flask_login import current_user
+from . import db 
+from flask import Flask, jsonify
 
 # Blueprint for main routes handling different pages of the web application.
 # Each route renders a specific HTML template when accessed.
@@ -13,11 +16,8 @@ main_bp = Blueprint('main', __name__)
 def index():
     current_date = datetime.now().date()  # Get the current date
     events = Event.query.all()
-    max_acceptable_date = current_date + timedelta(days=7)
-    events = Event.query.all()
-    filtered_events = [event for event in events if current_date <= event.date <= max_acceptable_date]
-    return render_template('index.html', events=events, filtered_events=filtered_events)
-    
+    return render_template('index.html', events=events, current_date=current_date)
+
 # Route for the event content page.
 @main_bp.route('/content-page.html')
 def event():
