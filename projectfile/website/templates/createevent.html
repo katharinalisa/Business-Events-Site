@@ -1,36 +1,39 @@
 {% extends "base.html" %}
 {% block header %}
-<form method="POST">
+<form method="POST" action="/createevent.html" enctype="multipart/form-data">
 <div class="background-color-createevent">
     <div class="margin-content">
     <body>
-        <br><br><br><br>
+        <br>
+        <br>
+        <br>
+        <br>
         <h2 style="text-align:center;font-weight:bold;margin-left:-40px;">Create Event</h2><br>
 {% endblock %}
 {% block content %}
         <div class="wrap-create-event">
             <table>
                 <tr>
-                    <th><table>
+                    <th>
                         <tr>
                             <th><p>Event title</p></th>
                             <th></th>
                         </tr>
                         <tr>
-                            <th colspan="5"><input type="text" id="event_name" name="event_name" class="enter-details"></th>
+                            <th colspan="5"><input type="text" id="event_name" name="event_name" class="enter-details" required></th>
                         </tr>
                         <tr>
                             <th style="height:20px;"></th>
                         </tr>
-                        <tr><table>
+                         <tr>
                             <tr>
                                 <th><p class="date">Date</p></th>
                                 <th><p class="s-time">Start Time</p></th>
                                 <th><p class="e-time">End Time</p></th>
                             <tr>
-                                <th colspan="1"><input type="date" id="date" name="date" placeholder="dd/mm/yyyy" class="date-entry"></th>
-                                <th colspan="1"><input type="time" id="starttime" name="starttime" placeholder="hh:mm" class="starttime-entry"></th>
-                                <th colspan="1"><input type="time" id="endtime" name="endtime" placeholder="hh:mm" class="endtime-entry"></th>
+                                <th colspan="1"><input type="date" id="date" name="date" placeholder="dd/mm/yyyy" class="date-entry" required></th>
+                                <th colspan="1"><input type="time" id="starttime" name="starttime" placeholder="hh:mm" class="starttime-entry" required></th>
+                                <th colspan="1"><input type="time" id="endtime" name="endtime" placeholder="hh:mm" class="endtime-entry" required></th>
                             </tr>
                         <tr>
                             <th style="height:20px;"></th>
@@ -39,11 +42,11 @@
                             <th><p>Event type</p></th>
                         </tr>
                         <tr>
-                            <th><input type="radio" id="event_type" name="event_type" value="In person">
+                            <th><input type="radio" id="event_type" name="event_type" value="In person" required>
                             <label style="font-weight:lighter;" for="event_type">In person</label></th>
                         </tr>
                         <tr>
-                            <th><input type="radio" id="event_type" name="event_type" value="Online">
+                            <th><input type="radio" id="event_type" name="event_type" value="Online" required>
                             <label style="font-weight:lighter;" for="event_type">Online</label></th>
                         </tr>
                         <tr>
@@ -53,15 +56,15 @@
                             <th><p>Location</p></th>
                         </tr>
                         <tr>
-                            <th colspan="5"><input type="text" id="street" name="street" placeholder="Street" class="enter-details"></th>
+                            <th colspan="5"><input type="text" id="street" name="street" placeholder="Street" class="enter-details" required></th>
                         </tr>
                         <tr>
                             <th style="height:20px;"></th>
                         </tr>
                         <tr>
-                            <th colspan="1"><input type="text" id="suburb" name="suburb" placeholder="Suburb" class="suburb"></th>
-                            <th colspan="1"><input type="text" id="postcode" name="postcode" placeholder="Postcode" class="postcode"></th>
-                            <th colspan="1"><input type="text" id="state" name="state" placeholder="State" class="state"></th>
+                            <th colspan="1"><input type="text" id="suburb" name="suburb" placeholder="Suburb" class="suburb" required></th>
+                            <th colspan="1"><input type="text" id="postcode" name="postcode" placeholder="Postcode" class="postcode" required></th>
+                            <th colspan="1"><input type="text" id="state" name="state" placeholder="State" class="state" required></th>
                         </tr>
                         <tr>
                             <th style="height:20px;"></th>
@@ -70,21 +73,21 @@
                             <th><p>Select a category</p></th>
                         </tr>
                         <tr>
-                            <th><input type="radio" id="event_category" name="event_category">
+                            <th><input type="radio" id="event_category" name="event_category" value="Sales & Marketing" required>
                             <label style="font-weight:lighter;" for="event_category">Sales & Marketing</label></th>
-                            <th><input type="radio" id="event_category" name="event_category">
+                            <th><input type="radio" id="event_category" name="event_category" value="Finance" required>
                             <label style="font-weight:lighter;" for="event_category" class="margin-radio">Finance</label></th>
                         </tr>
                         <tr>
-                            <th><input type="radio" id="event_category" name="event_category">
+                            <th><input type="radio" id="event_category" name="event_category" value="Startup" required>
                             <label style="font-weight:lighter;" for="event_category">Startup</label></th>
-                            <th><input type="radio" id="event_category" name="event_category">
+                            <th><input type="radio" id="event_category" name="event_category" value="Real Estate" required>
                             <label style="font-weight:lighter;" for="event_category" class="margin-radio">Real Estate</label></th>
                         </tr>
                         <tr>
-                            <th><input type="radio" id="event_category" name="event_category">
+                            <th><input type="radio" id="event_category" name="event_category" value="Education" required>
                             <label style="font-weight:lighter;" for="event_category">Education</label></th>
-                            <th><input type="radio" id="event_category" name="event_category">
+                            <th><input type="radio" id="event_category" name="event_category" value="Other" required>
                             <label style="font-weight:lighter;" for="event_category" class="margin-radio">Other</label></th>
                         </tr>
                         <tr>
@@ -95,7 +98,7 @@
                             <th></th>
                         </tr>
                         <tr>
-                            <th colspan="5"><input type="text" id="performer" name="performer" class="enter-details"></th>
+                            <th colspan="5"><input type="text" id="performer" name="performer" class="enter-details" required></th>
                         </tr>
                         <tr>
                             <th style="height:20px;"></th>
@@ -114,7 +117,7 @@
                             <th></th>
                         </tr>
                         <tr>
-                            <th colspan="1"><input type="text" id="price" name="price" value="$" style="width:155px;height:35px;font-weight:lighter;"></th>
+                            <th colspan="1"><input type="text" id="price" name="price" value="$" style="width:155px;height:35px;font-weight:lighter;" required></th>
                         </tr>
                         <tr>
                             <th style="height:20px;"></th>
@@ -127,7 +130,7 @@
                     <th><p>Add pictures</p></th>
                 </tr>
                 <tr>
-                    <th colspan="1"><input type="file" id="image" name="image"></th>       
+                    <th colspan="1"><input type="file" id="image" name="image" required></th>       
                 </tr>
                 <tr>
                     <th style="height:20px;"></th>
@@ -135,9 +138,9 @@
             </table>
             <label>
                 Description</label><br>
-                <input type="text" class="description-box" id="description" name="description" contenteditable="true"></div><br>
-            </input>
-            <br><br><br><br>
+                <form>
+                    <input type="text" class="description-box" id="description" name="description" contenteditable="true" required></div><br>
+                </form><br>
             <table>
                 <tr>
                     <th></th>
@@ -150,10 +153,7 @@
                 </tr>
             </table>
         </div>
-    </body>
-    </div>
+   </body></div>
 </div>
-<br>
-<br>
 </form>
 {% endblock %}
