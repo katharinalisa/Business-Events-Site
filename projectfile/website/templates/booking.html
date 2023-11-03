@@ -27,25 +27,30 @@
                             <th><p class="num-tickets">TICKETS</p></th>
                             <th style="width:20px;"></th>
                             <th><p class="ticket-price">COST</p></th>
+                            <th><p class="ticket-price">IMAGE</p></th>
                         </tr>
                     </table></th>
                 </tr>
             </table>
             <hr style="margin-top:0px;border-color:rgb(145, 145, 145)">
             <div class="booking-content">
+{% if current_user.is_authenticated %}
+    {% if bookings %}
+        {% for booking in bookings %}
             <table>
-                <tr>
-                    <th><p class="booking-content1">{{ booking.booking_ref }}</p></th>
-                    <th style="width:50px;"></th>
-                    <th><p class="booking-content2">{{ booking.booking_datetime }}</p></th>
-                    <th style="width:50px;"></th>
-                    <th><p class="booking-content3">Develop a Successful Artificial Intelligence Startup Today! Entrepreneur<br>September 17, 2023 1:00 PM - 5:00 PM</p></th>
-                    <th style="width:50px;"></th>
-                    <th><p class="booking-content4">x2</p></th>
-                    <th style="width:100px;"></th>
-                    <th><p class="booking-content5">$210.66</p></th>
-                    <th style="width:50px;"></th>
-                    <th><img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F335194989%2F233567016891%2F1%2Foriginal.20220108-141604?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C910%2C455&s=f63c644bd3e803e16caa952069fb9f6c" class="img-booking"></th>
+               <tr>
+                 <th><p class="booking-content1">{{ booking.booking_ref }}</p></th>
+                 <th style="width:50px;"></th>
+                 <th><p class="booking-content2">{{ booking.booking_datetime }}</p></th>
+                 <th style="width:50px;"></th>
+                 {% if booking.event %}
+                     <th><p class="booking-content3"><i>"{{ booking.event.event_name }}"</i><br>{{ booking.event.date }} {{ booking.event.starttime }} - {{ booking.event.endtime }}</p></th>
+                     <th style="width:50px;"></th>
+                     <th><p class="booking-content4">{{ booking.event.num_tickets }}</p></th>
+                     <th style="width:100px;"></th>
+                     <th><p class="booking-content5">{{ booking.event.price }}</p></th>
+                     <th style="width:50px;"></th>
+                     <th><img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F335194989%2F233567016891%2F1%2Foriginal.20220108-141604?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C910%2C455&s=f63c644bd3e803e16caa952069fb9f6c" class="img-booking"></th>
                 </tr>
             </table>
             <hr style="margin-top:10px;border-color:rgb(145, 145, 145)">
