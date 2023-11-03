@@ -95,11 +95,13 @@ def payment():
     event_id = request.args.get('event_id')
     event = Event.query.get(event_id)
     events = [event]
+    
+    # Generate a unique booking reference
+    booking_ref = token_hex(4)  # This generates an 8-character hexadecimal string
     booking_form = BookingForm(request.form)
+    
     if event_id is not None:
         if request.method == 'POST':
-            print("test")
-            booking_ref = booking_form.booking_ref.data
             booking_datetime = booking_form.booking_datetime.data
             event_name = booking_form.event_name.data
             price = booking_form.price.data
@@ -119,8 +121,7 @@ def payment():
             db.session.commit()
             flash('Thank you for your purchase! You will receive a confirmation email shortly.', 'success')
             return render_template('payment.html', event=event, events=events, booking_form=booking_form)
-        else:
-            pass
+  
     else:    
         flash('An error occurred while proceeding to pay.', category='error')
         return redirect(url_for('404.html'))
@@ -150,17 +151,10 @@ def payment():
     if event_id is not None:
         if request.method == 'POST':
             print("test")
-
-
-
-# On the content page, set the event_id in the session
-@destbp.route('/content-page/<int:event_id>')
-def content(event_id):
-    session['selected_event_id'] = event_id
-    return render_template('content-page.html', event_id=event_id)
+            
 
 @destbp.route('/booking.html', methods=['GET'])
 def bookings():
     event_id = request.args.get('event_id')  # Get the event_id from the query parameters
     session['selected_event_id'] = event_id
-    return render_template('booking.html', event_id=event_id)
+    if current_user.is_authenticated:
