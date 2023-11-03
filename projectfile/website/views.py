@@ -23,10 +23,9 @@ def index():
 def contact():
     return render_template('Contact Us.html')
     
-# Route for the event creation page.
-@main_bp.route('/createevent.html')
-def createevent():
-    return render_template('createevent.html')
+@main_bp.route('/Privacy_Policy.html')
+def policy():
+    return render_template('Privacy_Policy.html')
     
 # Route for the payment page
 @main_bp.route('/payment.html')
