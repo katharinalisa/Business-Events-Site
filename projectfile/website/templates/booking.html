@@ -50,14 +50,23 @@
                      <th style="width:100px;"></th>
                      <th><p class="booking-content5">{{ booking.event.price }}</p></th>
                      <th style="width:50px;"></th>
-                     <th><img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F335194989%2F233567016891%2F1%2Foriginal.20220108-141604?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C910%2C455&s=f63c644bd3e803e16caa952069fb9f6c" class="img-booking"></th>
+                     <th><img src="{{ booking.event.image }}" class="img-booking"></th>
                 </tr>
             </table>
             <hr style="margin-top:10px;border-color:rgb(145, 145, 145)">
-            </div>
+             {% endfor %}
+    {% else %}
+        <p>You have no booking history</p>
+    {% endif %}
+{% endif %} 
         </div>
+        </div>
+    </div>
     </body>
  </div>
- <br><br><br><br>
+ <br
+  {% for bookings in booking %}
+  <br><br><br><br><br><br>
+  {% endfor %}
 </div>
 {% endblock %}
