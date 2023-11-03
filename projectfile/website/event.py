@@ -140,6 +140,13 @@ def edit_event(event_id):
         return redirect(url_for('event.create',  event_id=event_id))
     return render_template('createevent.html')
 
+@destbp.route('/delete-event/<int:event_id>', methods=['POST'])
+@login_required
+def delete_event(event_id):
+    event = Event.query.get(event_id)
+
+
+
 
 def check_upload_file(form):
     fp = form.image.data
