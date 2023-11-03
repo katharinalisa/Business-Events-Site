@@ -60,7 +60,16 @@ def comment():
         return render_template('content-page.html', event=event, comments=comments, comment_form=comment_form, event_id=event_id)
 
 
+@destbp.route('/event/cancel/<int:event_id>', methods=['POST'])
+@login_required
+def cancel_event(event_id):
+    event = Event.query.get(event_id)
 
+    if event is None:
+        flash('Event not found', 'error')
+        return redirect(url_for('main.index'))
+
+   
 
 
 
