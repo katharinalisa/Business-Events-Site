@@ -8,10 +8,10 @@
 {% block content %}
         <br>
         <div class="wrap-booking">
-        <div class="frame-booking">
-            <a href="index.html"><p style="color:rgb(0, 89, 255)">< Back</p></a><!-- links back to homepage-->
-            <h3>Booking history</h3>
-            <br>
+            <div class="frame-booking">
+                 <a href="index.html"><p style="color:rgb(0, 89, 255)">< Back</p></a><!-- links back to homepage-->
+                 <h3>Booking history</h3>
+                 <br>
         </div>
         <div class="margin-inside-booking">
             <table>
@@ -51,6 +51,7 @@
                      <th><p class="booking-content5">{{ booking.event.price }}</p></th>
                      <th style="width:50px;"></th>
                      <th><img src="{{ booking.event.image }}" class="img-booking"></th>
+                 {% endif %}
                 </tr>
             </table>
             <hr style="margin-top:10px;border-color:rgb(145, 145, 145)">
@@ -64,7 +65,7 @@
     </div>
     </body>
  </div>
- <br
+ <br>
   {% for bookings in booking %}
   <br><br><br><br><br><br>
   {% endfor %}
