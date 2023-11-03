@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from .models import Event, Comment
-from .forms import EventForm, CommentForm
+from .models import Event, Comment, Booking
+from .forms import EventForm, CommentForm, BookingForm
 from . import db
 from datetime import datetime
 import sqlalchemy.exc
@@ -19,6 +19,8 @@ current_date = datetime.now().date()
 def content():
     event_id = request.args.get('event_id')
     event = Event.query.get(event_id)
+    comments = Comment.query.filter_by(event_id=event_id).order_by(Comment.date_time.desc()).all()
+    comment_form = CommentForm()
     return render_template('content-page.html', event=event, event_id=event_id)
 
 
@@ -29,35 +31,36 @@ def comment():
 
     if event_id:
         event = Event.query.get(event_id)
-        if event:
-            comments = Comment.query.filter_by(event_id=event_id).order_by(Comment.date_time.desc()).all()
-            comment_form = CommentForm()
+        if event.canceled:
+                flash('This event is canceled. Comments are not allowed.', 'error')
+                return redirect(url_for('event.content', event_id=event_id))
+            
+        comments = Comment.query.filter_by(event_id=event_id).order_by(Comment.date_time.desc()).all()
+        comment_form = CommentForm()
             
             if current_user.is_authenticated:
-                if comment_form.validate_on_submit():
-                    if text == "None":
-                        flash('Your comment cannot be added to the event. Please try again later.', 'error')
-                    else:  # Validate the form data
-                        text = comment_form.text.data
+                text = comment_form.text.data  # Define text here
+                if text.strip() and len(text) >= 2:
                         author_id = current_user.user_id
                         new_comment = Comment(text=text, user_id=author_id, event_id=event_id)
                         db.session.add(new_comment)
                         db.session.commit()
+                        print(comments)
                         flash('Your comment has been added', 'success')
+                    else:
+                        flash('Comment cannot be empty or is too short', 'error')
                         return redirect(url_for('event.comment', event_id=event_id))
                 else:
-                    # Form data did not pass validation
-                    print(comment_form.errors)
+                    flash('Please log in', 'error')
+                return render_template('content-page.html', event=event, comments=comments, comment_form=comment_form, event_id=event_id)
             else:
-                flash('Please log in to leave a comment', 'error')
-        else:
-            flash('The event does not exist', category='error')
+                flash('The event does not exist', category='error')
+                return render_template('index.html')  
+                
         return render_template('content-page.html', event=event, comments=comments, comment_form=comment_form, event_id=event_id)
-    else:
-        flash('Invalid request', category='error')
 
-    flash('Please select an event to view', 'error')
-    return redirect(url_for('main.index'))
+
+
 
 
 
