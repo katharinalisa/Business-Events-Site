@@ -107,89 +107,54 @@
      <div class="wrap-comment-content">
         <br>
         <br>
-        <br>
-        <br>
         <div class="margin-content">
             <div class="comment-box">
                 <div class="wrap-comment">
-                    <h2><p>2 Comments</p></h2>
+                    <h2>Comments</h2>
                     <br>
+                {% if comments %}
+                    {% for comment in comments %}
                     <table>
                         <tr>
                             <!-- First comment in comment section -->
-                            <th rowspan="2" div class="wrap-profile-picture"></th>
-                            <th style="width:20px;"></th>
                             <th><table class="align-comments">
                                 <tr>
-                                    <th class="align-author"><p><i>AUTHOR</i></p></th>
-                                    <th style="width:4px;"></th>
-                                    <th class="align-comments"><p>ON</p></th>
-                                    <th style="width:4px;"></th>
-                                    <th class="align-comments"><p>SEP 3, 2023 AT 18:32 PM</p></th>
-                                    <th style="width:4px;"></th>
-                                    <th class="align-comments"><a href=""><p style="color:rgb(15, 178, 107);">(Edit)</p></a></th>
+                                    {% if comment.users %}
+                                    <th><p class="align-author"><i> {{ comment.users.firstname }} {{ comment.users.lastname }}</i></p></th>
+                                    {% endif %}
+                                    <th><p class="align-comments">on</p></th>
+                                    
+                                    <th><p class="align-comments">{{ comment.date_time }}</p></th>
+        
+                                    <th><a href=""><p class="align-comments" style="color:rgb(15, 178, 107);">(Edit)</p></a></th>
                                 </tr>
                             </table></th>
                         </tr>
                         <tr>
-                            <th></th>
-                            <th class="align-comments-content"><p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p></th>
-                            <th style="width:80px;"></th>
-                            <th><button class="reply-button">Reply</button></th>
-                            <th style="width:40px;"></th>
+                            <th class="align-comments-content"><p> {{ comment.text }} </p></th>
                         </tr>
                     </table>
-                 <br>
-                 <!-- Reply of first comment in comment section -->
-                 <div class="wrap-comment">
-                    <div class="wrap-reply">
-                        <table>
-                            <tr>
-                                <th rowspan="2" div class="wrap-profile-picture"></th>
-                                <th style="width:20px;"></th>
-                                <th><table class="align-comments">
-                                    <tr>
-                                        <th class="align-author"><p><i>AUTHOR</i></p></th>
-                                        <th style="width:4px;"></th>
-                                        <th class="align-comments"><p>ON</p></th>
-                                        <th style="width:4px;"></th>
-                                        <th class="align-comments"><p>SEP 4, 2023 AT 2:14 AM</p></th>
-                                        <th style="width:4px;"></th>
-                                        <th class="align-comments"><a href=""><p style="color:rgb(15, 178, 107);">(Edit)</p></a></th>
-                                    </tr>
-                                </table></th>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <th class="align-reply-content"><p>It was popularised in the 1960s.</p></th>
-                                <th style="width:80px;"></th>
-                                <th><button class="reply-button">Reply</button></th>
-                                <th style="width:40px;"></th>
-                            </tr>
-                        </table>
-                    </div>
-                 </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <!-- Write your own comment -->
-                    <h2><p>Submit a Comment</p></h2>
-                    <a href="login.html"><p style="color:rgb(15, 178, 107);;font-size:14px;">Not logged in yet? Log In here</p></a>
-                        <form class="comment-text-box">
-                            <div id="comment-box-text" contenteditable="true"></div>
-                            <br>
-                            <br>
+                    {% endfor %}
+                    <br>
+                    <br>
+                {% else %}
+                    <p>There are no comments to this event.</p><br>
+                {% endif %}
+                    <!-- Write your own comment -->
+                    <h2>
+                        Submit a comment</h2>
+                        <form method="POST" action="{{ url_for('event.comment', event_id=event.event_id) }}">
+                            <input type="text" id="text" name="text" class="comment-box-text">
+                            <button type="submit" class="submit-button" style="margin-top:15px;">Submit Comment</button>
                         </form>
-                    <table>
-                        <tr>
-                            <th style="width:780px;"></th>
-                            <th><input type="submit" value="Submit Comment" class="submit-button"></th>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
+        <br>
      </div>
+ {% endif %}
+</form>
 {% endblock %}
    
