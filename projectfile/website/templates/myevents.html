@@ -2,28 +2,31 @@
 {% block header %}
 {% endblock %}
 {% block content %}
+<form method="GET">
 <body>
     <br><br><br><br>
-    <div class="margin-content">
-    <h2 style="text-align:center;font-weight:bold;margin-left:-45px">My Events</h2>
+    <h2 style="text-align:center;">My Events</h2>
+    <hr style="border-color:grey;">
     <br>
-    <div class="content">
      {% if events %}
+     <div class="scrollmenu">
         {% for event in events %}
-        <a href="content-page.html">
+        <a href="{{ url_for('event.content', event_id=event.event_id) }}">
             <div class="wrap">
                 <div id="card">
                 <div class="images"> <img src="{{ event.image }}" style="width:260px;height:130px;"></div>
                     <p class="event-title-i">{{ event.event_name }}</p>
                     <p class="event-location">{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p>
                     <p class="event-price">{{ event.price }}</p>
-                    <p class="event-date">{{ event.date }} {{ event.starttime }}</p>
+                    <p class="event-date">{{ event.date }} {{ event.starttime }} - {{ event.endtime }}</p>
                 </div>
             </div>
         </a>
         {% endfor %}
-     {% else %}
      <table>
+     </div>
+    {% else %}
+    <table style="margin-left:200px;">
         <tr>
             <th><p>You have no events created yet.</p></th>
             <th style="width:4px;"></th>
