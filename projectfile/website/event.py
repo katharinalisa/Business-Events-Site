@@ -158,3 +158,13 @@ def bookings():
     event_id = request.args.get('event_id')  # Get the event_id from the query parameters
     session['selected_event_id'] = event_id
     if current_user.is_authenticated:
+        
+         bookings = Booking.query.filter_by(user_id=current_user.user_id).all()
+    else:
+        # Handle the case where the user is not authenticated or logged in
+        flash('Please log in to view your bookings.', 'error')
+        return redirect(url_for('auth.login'))
+
+    return render_template('booking.html', event_id=event_id, bookings=bookings)
+
+
