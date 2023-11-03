@@ -20,13 +20,13 @@
                         </tr>
                         {% if events %}
                         <tr>
-                            <th><p class="wrap-summary-content1"style="font-weight:lighter;line-height:1.3em;height:4em;overflow:hidden;">{{ event.event_name }}</p></th>
+                            <th><p class="wrap-summary-content1"style="font-weight:lighter;line-height:1.3em;height:4em;overflow:hidden;"><i>"{{ event.event_name }}"</i><br>{{ event.street}} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p></th>
                         </tr>
                         <tr>
                             <th><p class="wrap-summary-content1">DATE & TIME</p></th>
                         </tr>
                         <tr>
-                            <th><p class="wrap-summary-content1" style="font-weight:lighter;">{{ event.date }} {{ event.starttime }} {{ event.endtime }}</p></th>
+                            <th><p class="wrap-summary-content1" style="font-weight:lighter;">{{ event.date }}, {{ event.starttime }} - {{ event.endtime }}</p></th>
                         </tr>
                         <tr>
                             <th colspan="3"><hr class="hr"></th>
