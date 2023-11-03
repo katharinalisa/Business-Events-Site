@@ -6,6 +6,8 @@ from flask_login import login_required, current_user
 import os
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from werkzeug.security import check_password_hash
+from secrets import token_hex
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -15,7 +17,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(50), unique=True)
     phone = db.Column(db.String(30), unique=True)
     password = db.Column(db.String(150), nullable=False)
-    comments = db.relationship('Comment', backref='users')
     bookings = db.relationship('Booking', backref='users')
     def __repr__(self):
         return f"User: {self.firstname}"
@@ -24,6 +25,7 @@ class User(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+
 
 class Event(db.Model):
     __tablename__ = 'events'
@@ -43,34 +45,39 @@ class Event(db.Model):
     event_type = db.Column(db.String(30))
     image = db.Column(db.String) 
     description = db.Column(db.Text)
+    canceled = db.Column(db.Boolean, default=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     users = db.relationship('User', backref='events')
     comments = db.relationship('Comment', backref='events')
     bookings = db.relationship('Booking', backref='bookings')
+    bookings = db.relationship('Booking', back_populates='event')
     def __repr__(self):
         return f"Event: {self.event_name}"
+
 
 class Comment(db.Model):
     __tablename__ = 'comments'
     comment_id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String(120))
+    text = db.Column(db.Text)
     date_time = db.Column(db.DateTime, default=datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.event_id'))
+    users = db.relationship('User', backref='comments')
     def __repr__(self):
         return f"Comment: {self.text}"
+    
     
 class Booking(db.Model):
     __tablename__ = 'bookings'
     booking_id = db.Column(db.Integer, primary_key=True)
-    booking_ref = db.Column(db.String(10))
+    booking_ref = db.Column(db.String(10), unique=True, default=token_hex(8))
     booking_datetime = db.Column(db.DateTime, default=datetime.now())
-    num_tickets = db.Column(db.String(999))
-    booking_event_name = db.Column(db.String(200))
-    booking_price = db.Column(db.String(9999))
+    event_name = db.Column(db.String(200))
+    price = db.Column(db.String(9999))
     tickets_available = db.Column(db.String(999))
     image = db.Column(db.String(999))
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.event_id'))
+    event = db.relationship('Event', back_populates='bookings')
     def __repr__(self):
         return f"Booking: {self.booking_ref}"
