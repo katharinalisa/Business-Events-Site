@@ -27,10 +27,9 @@ def contact():
 def policy():
     return render_template('Privacy_Policy.html')
     
-# Route for the payment page
-@main_bp.route('/payment.html')
-def payment():
-    return render_template('payment.html')
+@main_bp.route('/terms_and_conditions.html')
+def terms():
+    return render_template('terms_and_conditions.html')
     
 # Route for the booking page.
 @main_bp.route('/booking.html')
