@@ -1,33 +1,52 @@
 {% extends "base.html" %}
 {% block header %}
+    <form method="GET">
     <div class="background-color2">
     <div class="margin-content">
-        <br><br><br><br>
-        <!-- selected event's detail page image -->
-        <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F335194989%2F233567016891%2F1%2Foriginal.20220108-141604?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C910%2C455&s=f63c644bd3e803e16caa952069fb9f6c" class="content-page-image">
+    <br><br><br><br>
+{% if event %}
+        <img src="{{ event.image }}" class="content-page-image">
         <br>
         <br>
-{% endblock %}
-{% block content %}
     </div>
-</div>
+    </div>
     <div class="margin-content">
-        <h1 div class="title-content-page">Develop a Successful Artificial Intelligence Startup Today! Entrepreneur</h1>
         <br>
+        {% if current_user.is_authenticated and current_user.user_id == event.user_id %}
+        {% if event.canceled %}
+        <form method="POST" action="{{ url_for('event.delete_event', event_id=event.event_id) }}">
+            <button type="submit" class="btn btn-danger">Delete Event</button>
+        </form>
+        {% else %}
+        <form method="POST" enctype="multipart/form-data" action="{{ url_for('event.edit_event', event_id=event.event_id) }}">
+            <input type="hidden" name="event_id" value="{{ event.event_id }}">
+            <button type="submit">Edit event</button>
+        </form>
+        <form method="POST" action="{{ url_for('event.cancel_event', event_id=event.event_id) }}">
+            <button type="submit" class="btn btn-danger">Cancel Event</button>
+        </form>
+        <form method="POST" action="{{ url_for('event.delete_event', event_id=event.event_id) }}">
+            <button type="submit" class="btn btn-danger">Delete Event</button>
+        </form>
+        {% endif %}
+    {% endif %}
+        <h1 div class="title-content-page"> {{ event.event_name }} </h1>
+        {% if event.canceled %}
+        <p class="text-danger">Cancelled</p>
+        {% endif %}
         <table>
             <th><p class="performer">Performed by</p></th>
             <th style="width:5px;"></th>
-            <th><p class="performer2">Atechup.com</th>
+            <th><p class="performer2"> {{ event.performer }} </th>
         </table>
-        <p class="price">From $105.33</p>
+        <p class="price">{{ event.price }}</p>
         <br>
         <table>
             <tr>
                 <th><h2 style="font-weight:bolder;">Description</h2></th>
             </tr>
             <tr>
-                <!-- Text will be replaced in Assignment 3 -->
-                <th colspan="5"><p div class="wrap-text1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, <br><br>but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply <br><br>dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s.</p></th>
+                <th colspan="5"><p div class="wrap-text1">{{ event.description }}</p></th>
             </tr>
             <tr>
                 <th style="height:20px;"></th>
@@ -41,7 +60,7 @@
                         <th style="font-size:18px;padding-left:40px;"><p>Date and Time</p></th>
                     </tr>
                     <tr>
-                        <th style="font-size:16px;padding-left:40px;color:rgb(224, 74, 14);font-weight:lighter"><p>Next date: Sun, 17 Sep 2023 1:00 PM - 5:00 PM</p></th>
+                        <th style="font-size:16px;padding-left:40px;color:rgb(15, 178, 107);font-weight:lighter"><p>{{ event.date }} {{ event.starttime }} {{ event.endtime }}</p></th>
                     </tr>
                     <tr>
                         <th style="height:20px;"></th>
@@ -50,40 +69,19 @@
                         <th style="font-size:18px;padding-left:40px;"><p>Location</p></th>
                     </tr>
                     <tr>
-                        <th style="font-size:16px;padding-left:40px;font-weight:lighter;padding-right:40px;"><p>Virtual Workshop Brisbane, QLD</p></th>
+                        <th style="font-size:16px;padding-left:40px;font-weight:lighter;padding-right:40px;"><p>{{ event.street }} {{ event.suburb }} {{ event.postcode }} {{ event.state }}</p></th>
                     </tr>
                     <tr>
                         <th style="height:20px;"></th>
                     </tr>
                     <tr>
-                        <th style="font-size:18px;padding-left:40px;"><p>Duration</p></th>
-                    </tr>
-                    <tr>
-                        <th style="font-size:16px;padding-left:40px;font-weight:lighter"><p>4 hours</p></th>
-                    </tr>
-                    <tr>
-                        <th style="height:20px;"></th>
+                        {% if event.canceled %}
+                        <th colspan="5"><button class="ticket-button" style="background-color:grey;" id="event-canceled" {% if event.canceled %}disabled{% endif %}>Event cancelled</button></th>
+                        {% else %}
+                        <th colspan="5"><a href="{{ url_for('event.payment', event_id=event.event_id) }}"><input type="button" value="GET TICKET" class="ticket-button"></a></th>
+                        {% endif %}
                     </tr>
                 </table>
-                <br>
-                <br>
-                <!-- Price wrapped in box -->
-                <table class="wrap-price-on-content-page">
-                    <tr>
-                        <th style="height:20px;"></th>
-                    </tr>
-                    <tr>
-                        <th style="padding-left:40px;padding-top:10px;"><p>Amount</p></th>
-                        <th><button class="amount-button">-</button></th>
-                        <th><p style="width:30px;margin-left:-85px;padding-top:10px;">2</p></th>
-                        <th><button class="amount-button" style="margin-left:-60px;">+</button></th>
-                        <th div class="wrap-price-field">$210.66</th>
-                        <th style="width:40px;"></th>
-                    </tr>
-                    <tr>
-                        <th colspan="5"><a href="payment.html"><input type="submit" value="GET TICKET" class="ticket-button"></a></th>
-                    </tr>
-                </table></tr>
             </tr>
         </table>
         <table>
@@ -95,7 +93,7 @@
                         <br>
                         <th><p style="font-weight:lighter;">Published by</p></th>
                         <th style="width:5px;"></th>
-                        <th><p style="color:grey;font-weight:lighter;">Atechup.com</p></th>
+                        <th><p style="color:grey;font-weight:lighter;">{{ event.users.firstname }} {{ event.users.lastname }}</p></th>
                     </tr>
                 </table></th>
             </tr>
@@ -105,7 +103,6 @@
         <br>
         <!-- Comment section -->
      <div class="wrap-comment-content">
-        <br>
         <br>
         <div class="margin-content">
             <div class="comment-box">
