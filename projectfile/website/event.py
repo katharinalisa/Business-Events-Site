@@ -145,6 +145,15 @@ def edit_event(event_id):
 def delete_event(event_id):
     event = Event.query.get(event_id)
 
+ if event.user_id == current_user.user_id:
+        db.session.delete(event)
+        db.session.commit()
+        flash('Event has been deleted', 'success')
+    else:
+        flash('An error occurred while deleting the event', 'error')
+
+    return redirect(url_for('main.index'))
+
 
 
 
