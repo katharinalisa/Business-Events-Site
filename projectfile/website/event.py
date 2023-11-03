@@ -69,6 +69,17 @@ def cancel_event(event_id):
         flash('Event not found', 'error')
         return redirect(url_for('main.index'))
 
+     if event.user_id == current_user.user_id:
+            event.canceled = True  # Mark the event as canceled
+            db.session.commit()
+            flash('Event has been canceled', 'success')
+            return render_template('content-page.html', event=event, event_id=event_id)
+    else:
+        flash('An error occured while canceling the event.', 'error')
+    
+    return redirect(url_for('main.index'))
+
+
    
 
 
@@ -86,11 +97,8 @@ def create():
         state = form.state.data
         price = form.price.data 
         date_str = form.date.data
-        date = datetime.strptime(date_str, '%Y-%m-%d').date()
         starttime_str = form.starttime.data 
         endtime_str = form.endtime.data
-        starttime = datetime.strptime(starttime_str, '%H:%M').time()
-        endtime = datetime.strptime(endtime_str, '%H:%M').time()
         performer = form.performer.data
         event_category = form.event_category.data
         event_type = form.event_type.data
@@ -124,6 +132,13 @@ def create():
             return redirect(url_for('event.create'))
         
     return render_template('createevent.html', form=form)
+
+
+@destbp.route('/createevent.html/<int:event_id>', methods=['GET'])
+def edit_event(event_id):
+    if request.method == 'POST':
+        return redirect(url_for('event.create',  event_id=event_id))
+    return render_template('createevent.html')
 
 
 def check_upload_file(form):
