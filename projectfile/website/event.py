@@ -13,10 +13,14 @@ from flask import session
 from secrets import token_hex
 
 destbp = Blueprint('event', __name__)
+current_date = datetime.now().date()
 
 @destbp.route('/content-page')
 def content():
     event_id = request.args.get('event_id')
+    event = Event.query.get(event_id)
+    return render_template('content-page.html', event=event, event_id=event_id)
+
 
 @destbp.route('/createevent.html', methods=['GET', 'POST'])
 @login_required
