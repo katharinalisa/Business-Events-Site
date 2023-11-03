@@ -31,15 +31,6 @@ def policy():
 def terms():
     return render_template('terms_and_conditions.html')
     
-# Route for the booking page.
-@main_bp.route('/booking.html')
-def bookings():
-    return render_template('booking.html')
-
-# Route for Forgot Password Page
-@main_bp.route('/Forgot_Password.html')
-def forgotpassword():
-    return render_template('Forgot_Password.html')
 
 @main_bp.route('/myevents.html')
 def myevents():
